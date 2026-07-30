@@ -639,15 +639,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .modal-content {
-    background-color: var(--card-bg);
+    background-color: #121616; /* Solid dark color to prevent transparency issues */
     margin: 5% auto; 
     padding: 40px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     width: 90%;
     max-width: 500px;
     border-radius: 12px;
     position: relative;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.8);
     animation: modalFadeIn 0.3s ease-out;
 }
 
@@ -728,6 +728,14 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
     gap: 8px;
     cursor: pointer;
+}
+
+.radio-group input[type="radio"] {
+    width: 22px;
+    height: 22px;
+    margin: 0;
+    cursor: pointer;
+    accent-color: var(--teal);
 }
 
 .btn-submit {
