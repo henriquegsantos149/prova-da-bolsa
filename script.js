@@ -106,4 +106,50 @@ document.addEventListener('DOMContentLoaded', () => {
             container.scrollBy({ left: 175, behavior: 'smooth' });
         });
     });
+
+    // Modal Logic
+    const modal = document.getElementById('leadModal');
+    const btnOpenModal = document.getElementById('btn-open-modal');
+    const spanClose = document.querySelector('.close-modal');
+    const leadForm = document.getElementById('leadForm');
+    const telefoneInput = document.getElementById('telefone');
+
+    if (btnOpenModal) {
+        btnOpenModal.addEventListener('click', (e) => {
+            e.preventDefault();
+            modal.style.display = 'block';
+        });
+    }
+
+    if (spanClose) {
+        spanClose.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+    }
+
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+
+    // Restrict Phone Input to Numbers Only
+    if (telefoneInput) {
+        telefoneInput.addEventListener('input', function(e) {
+            // Remove anything that is not a number
+            this.value = this.value.replace(/[^0-9]/g, '');
+        });
+    }
+
+    // Handle Form Submit
+    if (leadForm) {
+        leadForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // You can add the logic to send the data here
+            alert('Sua inscrição foi enviada com sucesso! Entraremos em contato em breve.');
+            modal.style.display = 'none';
+            leadForm.reset();
+        });
+    }
+
 });

@@ -39,7 +39,7 @@
                     Participe gratuitamente da prova de seleção e avance rumo às melhores oportunidades da área ambiental.
                 </p>
                 <div class="hero-actions">
-                    <a href="#cursos" class="btn btn-primary">GARANTIR MINHA CHANCE DE BOLSA</a>
+                    <button id="btn-open-modal" class="btn btn-primary">GARANTIR MINHA CHANCE DE BOLSA</button>
                 </div>
             </div>
         </section>
@@ -492,5 +492,46 @@
     </footer>
 
     <script src="script.js"></script>
+
+    <!-- Modal Formulário -->
+    <div id="leadModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Garantir Minha Bolsa</h2>
+            <p>Preencha seus dados abaixo para se inscrever e concorrer à bolsa de estudos.</p>
+            <form id="leadForm">
+                <div class="form-group">
+                    <label for="nome">Seu nome</label>
+                    <input type="text" id="nome" name="nome" required placeholder="Digite seu nome completo">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Seu email</label>
+                    <input type="email" id="email" name="email" required placeholder="Digite seu melhor email">
+                </div>
+                
+                <div class="form-group">
+                    <label for="telefone">Seu telefone (com DDD)</label>
+                    <input type="tel" id="telefone" name="telefone" required maxlength="11" placeholder="Ex: 11987654321">
+                </div>
+                
+                <div class="form-group">
+                    <label for="area">Qual é a sua área de formação?</label>
+                    <input type="text" id="area" name="area" required placeholder="Ex: Engenharia Ambiental, Biologia, etc.">
+                </div>
+                
+                <div class="form-group">
+                    <label>Você possui graduação completa?</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="graduacao" value="Sim" required> Sim</label>
+                        <label><input type="radio" name="graduacao" value="Não" required> Não</label>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-submit">ENVIAR MINHA INSCRIÇÃO</button>
+            </form>
+        </div>
+    </div>
+
 </body>
 </html>
