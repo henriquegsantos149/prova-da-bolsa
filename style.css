@@ -295,7 +295,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .logo-anhanguera {
-    height: 55px; /* Reduced from 70px to match new size */
+    height: 70px; /* Increased back to 70px for better visibility */
 }
 
 /* Hero Section */
