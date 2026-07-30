@@ -302,8 +302,7 @@ h1, h2, h3, h4, h5, h6 {
 .courses-grid {
     display: grid;
     grid-template-columns: 1fr;
-    max-width: 800px; /* added a max-width so they don't stretch excessively */
-    margin: 0 auto;
+    width: 100%;
     gap: 40px;
 }
 
