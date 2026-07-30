@@ -352,6 +352,12 @@ h1, h2, h3, h4, h5, h6 {
     border: none;
 }
 
+.hero-actions .btn {
+    padding: 20px 50px;
+    font-size: 1.2rem;
+}
+
+
 .btn-primary {
     background: var(--brand-gradient);
     color: var(--primary-dark);
