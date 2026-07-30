@@ -284,18 +284,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .logo {
-    height: 80px; /* Adjust based on actual logo proportion */
+    height: 55px; /* Reduced from 80px */
     object-fit: contain;
 }
 
 .logo-divider {
+    height: 40px;
     width: 2px;
-    height: 60px;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: var(--teal);
 }
 
 .logo-anhanguera {
-    height: 70px; /* Adjust if Anhanguera logo needs to be slightly smaller */
+    height: 55px; /* Reduced from 70px to match new size */
 }
 
 /* Hero Section */
