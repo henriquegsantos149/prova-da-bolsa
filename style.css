@@ -126,17 +126,97 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.2;
 }
 
+/* Course Highlights */
+.course-highlights {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.highlight-item {
+    background: rgba(49, 168, 168, 0.1);
+    border: 1px solid var(--teal-blue);
+    border-radius: 8px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.highlight-label {
+    font-size: 0.8rem;
+    color: var(--green-2);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.highlight-value {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+/* Faculty Carousel */
 .faculty-group {
     display: flex;
     flex-direction: column;
     margin-top: 15px;
+    margin-bottom: 25px;
+}
+
+.carousel-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.carousel-btn {
+    background: var(--primary-dark);
+    border: 1px solid var(--green-2);
+    color: var(--green-2);
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    z-index: 10;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.carousel-btn:hover {
+    background: var(--green-2);
+    color: var(--primary-dark);
+}
+
+.prev-btn {
+    margin-right: 10px;
+}
+
+.next-btn {
+    margin-left: 10px;
 }
 
 .faculty-avatars {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    display: flex;
+    flex-wrap: nowrap;
     gap: 15px;
-    margin-top: 10px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    /* Hide scrollbar */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.faculty-avatars::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
 }
 
 .faculty-card {
@@ -147,8 +227,9 @@ h1, h2, h3, h4, h5, h6 {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
-    padding: 10px;
+    padding: 15px;
     transition: transform 0.3s ease, border-color 0.3s ease;
+    flex: 0 0 160px;
 }
 
 .faculty-card:hover {
@@ -158,11 +239,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .faculty-card img {
-    width: 60px;
-    height: 60px;
+    width: 85px;
+    height: 85px;
     border-radius: 8px;
     object-fit: cover;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     border: 1px solid var(--green-2);
 }
 
@@ -399,6 +480,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .course-info {
     flex: 1;
+    min-width: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;

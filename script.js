@@ -52,4 +52,58 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // Carousel Logic
+    const prevButtons = document.querySelectorAll('.prev-btn');
+    const nextButtons = document.querySelectorAll('.next-btn');
+    
+    document.querySelectorAll('.faculty-avatars').forEach(container => {
+        // Wait a small delay to ensure CSS is fully applied and widths are calculated correctly
+        setTimeout(() => {
+            if (container.scrollWidth > container.clientWidth) {
+                const children = Array.from(container.children);
+                // Duplicate elements to create the infinite scroll illusion
+                children.forEach(child => {
+                    const clone = child.cloneNode(true);
+                    container.appendChild(clone);
+                });
+
+                container.addEventListener('scroll', () => {
+                    const half = container.scrollWidth / 2;
+                    // If scrolled past the cloned half
+                    if (container.scrollLeft >= half) {
+                        container.style.scrollBehavior = 'auto';
+                        container.scrollLeft -= half;
+                    } 
+                    // If scrolled backwards past 0
+                    else if (container.scrollLeft <= 0) {
+                        container.style.scrollBehavior = 'auto';
+                        container.scrollLeft += half;
+                    }
+                });
+            }
+        }, 100);
+    });
+
+    prevButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const container = e.target.closest('.carousel-container').querySelector('.faculty-avatars');
+            // If we're exactly at 0, jump to the middle first so we can smoothly scroll left
+            if (container.scrollLeft <= 0) {
+                container.style.scrollBehavior = 'auto';
+                container.scrollLeft += container.scrollWidth / 2;
+                container.offsetHeight; // Force reflow
+            }
+            container.style.scrollBehavior = 'smooth';
+            container.scrollBy({ left: -175, behavior: 'smooth' });
+        });
+    });
+    
+    nextButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const container = e.target.closest('.carousel-container').querySelector('.faculty-avatars');
+            container.style.scrollBehavior = 'smooth';
+            container.scrollBy({ left: 175, behavior: 'smooth' });
+        });
+    });
 });
