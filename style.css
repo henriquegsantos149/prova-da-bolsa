@@ -126,6 +126,36 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.2;
 }
 
+.faculty-group {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+}
+
+.faculty-avatars {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.faculty-avatars img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--green-2);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    cursor: pointer;
+}
+
+.faculty-avatars img:hover {
+    transform: scale(1.15) translateY(-5px);
+    border-color: var(--teal-blue);
+    z-index: 2;
+    position: relative;
+}
+
 /* Header */
 .header {
     padding: 30px 0;
