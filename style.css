@@ -472,6 +472,14 @@ h6 {
     /* Texto escuro */
 }
 
+.course-alpa .faculty-name {
+    color: #e74c3c !important; /* Vermelho */
+}
+
+.course-grac .faculty-name {
+    color: #95A617 !important; /* Verde GRAC */
+}
+
 /* Modal Customizado de Confirmação */
 .custom-modal-overlay {
     position: fixed;

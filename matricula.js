@@ -69,6 +69,18 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
     });
 
+    // Atualizar Pós GRAC (R$ 9.700,00)
+    const priceGrac = document.querySelectorAll('[id^="price-grac"], [data-base="9700"]');
+    priceGrac.forEach(priceEl => {
+        const base = 9700.00;
+        const discounted = base * descMult;
+        priceEl.innerHTML = `
+            <div class="old-price">De: ${formatBRL(base)}</div>
+            <div class="dynamic-price">Por: ${formatBRL(discounted)} <span style="font-size: 1rem; font-weight: normal; color: #a0aec0;">à vista</span></div>
+            <div style="font-size: 0.9rem; color: var(--primary-color);">Parcele em até 12x no cartão</div>
+        `;
+    });
+
     // 3. Atualizar links de checkout dinamicamente com base no desconto
     // Você pode alterar as URLs base para as do Hotmart/Eduzz depois
     const checkoutGgsr = document.getElementById('checkout-ggsr');
@@ -78,9 +90,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const checkoutIdas = document.querySelectorAll('[id^="checkout-ida"]');
     checkoutIdas.forEach(checkoutEl => {
-        // Exemplo dinâmico: o link será checkout.ambientalpro.com/ida/70off
         checkoutEl.href = `https://checkout.ambientalpro.com/ida/${desconto}off`;
     });
+
+    const checkoutGrac = document.getElementById('checkout-grac');
+    if (checkoutGrac) {
+        checkoutGrac.href = `https://checkout.ambientalpro.com/grac/${desconto}off`;
+    }
 
     // Lógica do carrossel e botões de "Ver Grade Curricular" (Copiado do script.js original)
     // Toggle course details
