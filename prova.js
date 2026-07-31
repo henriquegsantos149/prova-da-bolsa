@@ -179,9 +179,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const q = questions[index];
         currentNumSpan.textContent = index + 1;
         
+        function updateProgressBar() {
+            const answeredCount = userAnswers.filter(answer => answer !== null).length;
+            const progressPercentage = (answeredCount / questions.length) * 100;
+            progressBar.style.width = `${progressPercentage}%`;
+        }
+        
         // Atualiza barra de progresso
-        const progressPercentage = ((index + 1) / questions.length) * 100;
-        progressBar.style.width = `${progressPercentage}%`;
+        updateProgressBar();
 
         // Renderiza HTML
         let html = `
@@ -227,6 +232,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 // Salva resposta
                 userAnswers[index] = parseInt(e.target.value);
+                
+                // Atualiza progresso da barra verde
+                updateProgressBar();
+                
+                // Auto-avança após pequeno delay
+                setTimeout(() => {
+                    if (currentQuestionIndex < questions.length - 1) {
+                        currentQuestionIndex++;
+                        renderQuestion(currentQuestionIndex);
+                    } else {
+                        btnNext.click(); // Aciona o botão de finalizar
+                    }
+                }, 400);
             });
         });
     }

@@ -966,7 +966,7 @@ h6 {
 
 .progress-bar {
     height: 100%;
-    background: var(--gradient-primary);
+    background: var(--brand-gradient);
     width: 0%;
     transition: width 0.4s ease;
 }
