@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prova da Bolsa - Ambiental Pro</title>
+    <meta name="description" content="Avaliação para concorrer a bolsas de estudos na Ambiental Pro.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="prova-body">
+    <!-- Background Grid Effect -->
+    <div class="bg-grid"></div>
+    <div class="grid-accents"></div>
+
+    <header class="header prova-header">
+        <div class="container header-container">
+            <div class="logos-container">
+                <img src="logo-ambientalpro.webp" alt="Ambiental Pro" class="logo">
+            </div>
+            
+            <div class="timer-container" id="timer-container">
+                <span id="time-left" class="time-left">35:00</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="prova-main">
+        <div class="container">
+            <div class="prova-container">
+                <!-- Tela de Instruções -->
+                <div id="instructions-section" class="instructions-section text-center">
+                    <h2 class="question-title" style="margin-bottom: 20px;">Instruções da Prova</h2>
+                    <p style="margin-bottom: 20px; font-size: 1.1rem;">Bem-vindo(a) à Prova da Bolsa da Ambiental Pro!</p>
+                    <ul style="text-align: left; margin: 0 auto 30px auto; max-width: 600px; line-height: 1.8; color: var(--light-gray);">
+                        <li>A prova contém <strong>12 questões</strong> de múltipla escolha.</li>
+                        <li>Você terá <strong>35 minutos</strong> para finalizar. O cronômetro iniciará assim que você clicar no botão abaixo.</li>
+                        <li>É possível avançar, voltar e revisar suas respostas antes de finalizar.</li>
+                        <li>Se o tempo esgotar, a prova será finalizada automaticamente.</li>
+                        <li>Sua nota definirá a porcentagem de desconto na matrícula (até 70%).</li>
+                    </ul>
+                    <button id="btn-start-quiz" class="btn btn-primary" style="font-size: 1.2rem; padding: 15px 40px;">INICIAR PROVA</button>
+                </div>
+
+                <!-- Conteúdo da Prova -->
+                <div id="quiz-content" style="display: none;">
+                    <div class="progress-section">
+                        <div class="progress-text">Questão <span id="current-question-num">1</span> de <span id="total-questions-num">12</span></div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" id="progress-bar"></div>
+                    </div>
+                </div>
+
+                <div class="question-section" id="question-container">
+                    <!-- Conteúdo renderizado pelo JS -->
+                </div>
+
+                <div class="navigation-section">
+                    <button class="btn btn-secondary btn-nav" id="btn-prev" disabled>Voltar</button>
+                    <button class="btn btn-primary btn-nav" id="btn-next">Avançar</button>
+                </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal de tempo esgotado -->
+    <div id="timeOutModal" class="modal">
+        <div class="modal-content text-center">
+            <h2>Tempo Esgotado!</h2>
+            <p>O tempo para realização da prova chegou ao fim.</p>
+            <p>Avaliando suas respostas...</p>
+        </div>
+    </div>
+
+    <!-- Script principal -->
+    <script src="prova.js"></script>
+</body>
+</html>

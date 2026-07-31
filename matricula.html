@@ -1,23 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bolsa de Estudos - Ambiental Pro</title>
-    <meta name="description"
-        content="Participe gratuitamente da prova de seleção e avance rumo às melhores oportunidades da área ambiental com bolsas de até 70% na matrícula da sua Pós.">
-
+    <meta name="description" content="Participe gratuitamente da prova de seleção e avance rumo às melhores oportunidades da área ambiental com bolsas de até 70% na matrícula da sua Pós.">
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
     <!-- Background Grid Effect -->
     <div class="bg-grid"></div>
@@ -34,35 +29,31 @@
     </header>
 
     <main>
-        <section class="hero-section">
-            <div class="container hero-content">
-                <h1 class="hero-title">
-                    Bolsa de <span class="gradient-highlight">até 70%</span> na<br>
-                    matrícula da sua Pós
-                </h1>
-                <p class="hero-subtitle">
-                    Participe gratuitamente da prova de seleção e avance rumo às melhores oportunidades da área
-                    ambiental.
-                </p>
-                <div class="hero-actions">
-                    <button id="btn-open-modal" class="btn btn-primary">GARANTIR MINHA CHANCE DE BOLSA</button>
-                </div>
-            </div>
-        </section>
-
-        <section id="sobre-a-prova" class="about-section">
+        <section class="results-hero">
             <div class="container">
-                <div class="about-card">
-                    <div class="about-content">
-                        <h2 class="section-title">O que é a <span class="text-accent">Prova da Bolsa?</span></h2>
-                        <p>A <strong>Prova da Bolsa da Ambiental Pro</strong> é a sua grande chance de alavancar a
-                            carreira na área ambiental pagando muito menos. Disponibilizamos descontos de até
-                            <strong>70% na matrícula</strong> para os candidatos com melhor desempenho.</p>
-                        <p>A avaliação é <strong>100% online, totalmente gratuita</strong> e foi cuidadosamente
-                            elaborada para testar seus conhecimentos e reconhecer o seu potencial. Não perca a
-                            oportunidade de se especializar nas áreas mais requisitadas do mercado com a chancela da
-                            Ambiental Pro e da Anhanguera.</p>
+                <h1 class="results-title">Parabéns, <span id="user-name" class="gradient-highlight">Candidato</span>!</h1>
+                <p>Aqui está o resultado do seu desempenho na Prova da Bolsa:</p>
+                <div class="results-stats">
+                    <div class="stat-box">
+                        <div class="stat-value" id="score-acertos">--/12</div>
+                        <div class="stat-label">Acertos</div>
                     </div>
+                    <div class="stat-box">
+                        <div class="stat-value" id="score-nota">--</div>
+                        <div class="stat-label">Nota Final</div>
+                    </div>
+                    <div class="stat-box stat-highlight">
+                        <div class="stat-value" id="score-desconto">--%</div>
+                        <div class="stat-label">Desconto Garantido</div>
+                    </div>
+                </div>
+                <div class="scroll-hint" style="position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); width: 100%;">
+                    <p style="margin-bottom: 5px;">Escolha a sua pós-graduação abaixo e aproveite seu desconto exclusivo!</p>
+                    <a href="#cursos" class="scroll-down-arrow" style="margin-top: 10px;">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </a>
                 </div>
             </div>
         </section>
@@ -70,7 +61,7 @@
         <section id="cursos" class="courses-section">
             <div class="container">
                 <h2 class="section-title">Escolha sua Pós-Graduação</h2>
-
+                
                 <div class="courses-grid">
                     <!-- Course 1 -->
                     <div class="course-card">
@@ -78,17 +69,14 @@
                             <img src="logo-ggsr.webp" alt="Pós GGSR" class="course-logo">
                             <div class="course-info">
                                 <div class="course-category">PÓS-GRADUAÇÃO</div>
-                                <h3 class="course-title">Georreferenciamento, Geoprocessamento e Sensoriamento Remoto
-                                </h3>
-                                <p class="course-desc">Reconhecida pelo CREA, para graduados de qualquer área que
-                                    desejam atuar na área de Georreferenciamento, Geoprocessamento e Sensoriamento
-                                    Remoto.</p>
-                                <p class="course-price">Valor integral: <strong>R$ 7.970,00</strong> <span
-                                        class="price-note">(sem desconto)</span></p>
-                                <button class="btn btn-secondary btn-more">Saiba mais</button>
+                                <h3 class="course-title">Georreferenciamento, Geoprocessamento e Sensoriamento Remoto</h3>
+                                <p class="course-desc">Reconhecida pelo CREA, para graduados de qualquer área que desejam atuar na área de Georreferenciamento, Geoprocessamento e Sensoriamento Remoto.</p>
+                                <p class="course-price" id="price-ggsr" data-base="7970">Valor integral: <strong>R$ 7.970,00</strong></p>
+                                <a href="#" id="checkout-ggsr" class="btn btn-primary" style="margin-bottom: 10px; display: block; text-align: center;">FAZER MINHA MATRÍCULA</a>
+                                <button class="btn btn-secondary btn-more">Ver Grade Curricular</button>
                                 <div class="course-details">
                                     <h4>Informações do Curso:</h4>
-                                    <div class="course-highlights">
+                                                                                                                                                <div class="course-highlights">
                                         <div class="highlight-item">
                                             <span class="highlight-label">Título</span>
                                             <span class="highlight-value">Especialista</span>
@@ -109,69 +97,59 @@
                                     <div class="faculty-group">
                                         <strong>Professores:</strong>
                                         <div class="carousel-container">
-                                            <button class="carousel-btn prev-btn"
-                                                aria-label="Anterior">&#10094;</button>
+                                            <button class="carousel-btn prev-btn" aria-label="Anterior">&#10094;</button>
                                             <div class="faculty-avatars">
                                                 <div class="faculty-card">
-                                                    <img src="faculty/ggsr-henrique-gonzalez.webp"
-                                                        alt="Henrique Gonzalez">
+                                                    <img src="faculty/ggsr-henrique-gonzalez.webp" alt="Henrique Gonzalez">
                                                     <div class="faculty-info">
                                                         <div class="faculty-name">Henrique Gonzalez</div>
                                                         <div class="faculty-title">Engenheiro Ambiental (UFRJ)</div>
                                                     </div>
                                                 </div>
                                                 <div class="faculty-card">
-                                                    <img src="faculty/ggsr-raquel-carnivalle-melillo.webp"
-                                                        alt="Raquel Carnivalle Melillo">
+                                                    <img src="faculty/ggsr-raquel-carnivalle-melillo.webp" alt="Raquel Carnivalle Melillo">
                                                     <div class="faculty-info">
                                                         <div class="faculty-name">Raquel Carnivalle Melillo</div>
-                                                        <div class="faculty-title">Doutora em Ambiente e Sociedade
-                                                            (UNICAMP)</div>
+                                                        <div class="faculty-title">Doutora em Ambiente e Sociedade (UNICAMP)</div>
                                                     </div>
                                                 </div>
                                                 <div class="faculty-card">
                                                     <img src="faculty/ggsr-rodolfo-finatti.webp" alt="Rodolfo Finatti">
                                                     <div class="faculty-info">
                                                         <div class="faculty-name">Rodolfo Finatti</div>
-                                                        <div class="faculty-title">Geógrafo (UNESP), PhD em Geografia
-                                                            (USP)</div>
+                                                        <div class="faculty-title">Geógrafo (UNESP), PhD em Geografia (USP)</div>
                                                     </div>
                                                 </div>
                                                 <div class="faculty-card">
-                                                    <img src="faculty/ggsr-vitor-do-sacramento.webp"
-                                                        alt="Vitor do Sacramento">
+                                                    <img src="faculty/ggsr-vitor-do-sacramento.webp" alt="Vitor do Sacramento">
                                                     <div class="faculty-info">
                                                         <div class="faculty-name">Vitor do Sacramento</div>
                                                         <div class="faculty-title">Geólogo (UNB) com MBA</div>
                                                     </div>
                                                 </div>
                                                 <div class="faculty-card">
-                                                    <img src="faculty/ggsr-lu-s-ant-nio-soares.webp"
-                                                        alt="Luís Antônio Soares">
+                                                    <img src="faculty/ggsr-lu-s-ant-nio-soares.webp" alt="Luís Antônio Soares">
                                                     <div class="faculty-info">
                                                         <div class="faculty-name">Luís Antônio Soares</div>
                                                         <div class="faculty-title">Engenheiro Agrimensor (UFU)</div>
                                                     </div>
                                                 </div>
                                                 <div class="faculty-card">
-                                                    <img src="faculty/ggsr-ana-beatriz-ulhoa.webp"
-                                                        alt="Ana Beatriz Ulhoa">
+                                                    <img src="faculty/ggsr-ana-beatriz-ulhoa.webp" alt="Ana Beatriz Ulhoa">
                                                     <div class="faculty-info">
                                                         <div class="faculty-name">Ana Beatriz Ulhoa</div>
                                                         <div class="faculty-title">Engenheira Ambiental</div>
                                                     </div>
                                                 </div>
                                                 <div class="faculty-card">
-                                                    <img src="faculty/ggsr-charlie-turette-lopes.webp"
-                                                        alt="Charlie Turette Lopes">
+                                                    <img src="faculty/ggsr-charlie-turette-lopes.webp" alt="Charlie Turette Lopes">
                                                     <div class="faculty-info">
                                                         <div class="faculty-name">Charlie Turette Lopes</div>
                                                         <div class="faculty-title">Engenheiro de Produção</div>
                                                     </div>
                                                 </div>
                                                 <div class="faculty-card">
-                                                    <img src="faculty/ggsr-bismarck-feuchard.webp"
-                                                        alt="Bismarck Feuchard">
+                                                    <img src="faculty/ggsr-bismarck-feuchard.webp" alt="Bismarck Feuchard">
                                                     <div class="faculty-info">
                                                         <div class="faculty-name">Bismarck Feuchard</div>
                                                         <div class="faculty-title">Eng. Civil (INCRA)</div>
@@ -207,15 +185,13 @@
                             <div class="course-info">
                                 <div class="course-category">MBA</div>
                                 <h3 class="course-title">Inteligência de Dados Ambientais</h3>
-                                <p class="course-desc">MBA pioneiro focado no desenvolvimento de habilidades práticas,
-                                    técnicas e gerenciais para se tornar um Especialista em Estratégia de Dados
-                                    Ambientais.</p>
-                                <p class="course-price">Valor integral: <strong>R$ 11.970,00</strong> <span
-                                        class="price-note">(sem desconto)</span></p>
-                                <button class="btn btn-secondary btn-more">Saiba mais</button>
+                                <p class="course-desc">MBA pioneiro focado no desenvolvimento de habilidades práticas, técnicas e gerenciais para se tornar um Especialista em Estratégia de Dados Ambientais.</p>
+                                <p class="course-price" id="price-ida" data-base="11970">Valor integral: <strong>R$ 11.970,00</strong></p>
+                                <a href="#" id="checkout-ida" class="btn btn-primary" style="margin-bottom: 10px; display: block; text-align: center;">FAZER MINHA MATRÍCULA</a>
+                                <button class="btn btn-secondary btn-more">Ver Grade Curricular</button>
                                 <div class="course-details">
                                     <h4>Informações do Curso:</h4>
-                                    <div class="course-highlights">
+                                                                                                                                                <div class="course-highlights">
                                         <div class="highlight-item">
                                             <span class="highlight-label">Título</span>
                                             <span class="highlight-value">Especialista (MBA)</span>
@@ -236,37 +212,31 @@
                                     <div class="faculty-group">
                                         <strong>Professores:</strong>
                                         <div class="carousel-container">
-                                            <button class="carousel-btn prev-btn"
-                                                aria-label="Anterior">&#10094;</button>
+                                            <button class="carousel-btn prev-btn" aria-label="Anterior">&#10094;</button>
                                             <div class="faculty-avatars">
                                                 <div class="faculty-card">
-                                                    <img src="faculty/ida-henrique-gonzalez.webp"
-                                                        alt="Henrique Gonzalez">
+                                                    <img src="faculty/ida-henrique-gonzalez.webp" alt="Henrique Gonzalez">
                                                     <div class="faculty-info">
                                                         <div class="faculty-name">Henrique Gonzalez</div>
                                                         <div class="faculty-title">Engenheiro Ambiental (UFRJ)</div>
                                                     </div>
                                                 </div>
                                                 <div class="faculty-card">
-                                                    <img src="faculty/ida-marlon-fernandes-de-souza.webp"
-                                                        alt="Marlon Fernandes de Souza">
+                                                    <img src="faculty/ida-marlon-fernandes-de-souza.webp" alt="Marlon Fernandes de Souza">
                                                     <div class="faculty-info">
                                                         <div class="faculty-name">Marlon Fernandes de Souza</div>
-                                                        <div class="faculty-title">Doutor em Eng. Agrícola (Unicamp)
-                                                        </div>
+                                                        <div class="faculty-title">Doutor em Eng. Agrícola (Unicamp)</div>
                                                     </div>
                                                 </div>
                                                 <div class="faculty-card">
                                                     <img src="faculty/ida-lucas-baldoni.webp" alt="Lucas Baldoni">
                                                     <div class="faculty-info">
                                                         <div class="faculty-name">Lucas Baldoni</div>
-                                                        <div class="faculty-title">Doutor em Análise Ambiental (Unicamp)
-                                                        </div>
+                                                        <div class="faculty-title">Doutor em Análise Ambiental (Unicamp)</div>
                                                     </div>
                                                 </div>
                                                 <div class="faculty-card">
-                                                    <img src="faculty/ida-vitor-do-sacramento.webp"
-                                                        alt="Vitor do Sacramento">
+                                                    <img src="faculty/ida-vitor-do-sacramento.webp" alt="Vitor do Sacramento">
                                                     <div class="faculty-info">
                                                         <div class="faculty-name">Vitor do Sacramento</div>
                                                         <div class="faculty-title">Geólogo e Especialista (UNB)</div>
@@ -276,8 +246,7 @@
                                                     <img src="faculty/ida-vitor-amorim.webp" alt="Vitor Amorim">
                                                     <div class="faculty-info">
                                                         <div class="faculty-name">Vitor Amorim</div>
-                                                        <div class="faculty-title">Especialista em Sustentabilidade
-                                                        </div>
+                                                        <div class="faculty-title">Especialista em Sustentabilidade</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -309,15 +278,13 @@
                             <div class="course-info">
                                 <div class="course-category">PÓS-GRADUAÇÃO</div>
                                 <h3 class="course-title">Inteligência Artificial Aplicada ao Meio Ambiente</h3>
-                                <p class="course-desc">Capacita profissionais com competências estratégicas e
-                                    inteligência tecnológica para a arquitetura de sistemas automatizados no setor
-                                    ambiental.</p>
-                                <p class="course-price">Valor integral: <strong>R$ 11.970,00</strong> <span
-                                        class="price-note">(sem desconto)</span></p>
-                                <button class="btn btn-secondary btn-more">Saiba mais</button>
+                                <p class="course-desc">Capacita profissionais com competências estratégicas e inteligência tecnológica para a arquitetura de sistemas automatizados no setor ambiental.</p>
+                                <p class="course-price" id="price-ida" data-base="11970">Valor integral: <strong>R$ 11.970,00</strong></p>
+                                <a href="#" id="checkout-ida" class="btn btn-primary" style="margin-bottom: 10px; display: block; text-align: center;">FAZER MINHA MATRÍCULA</a>
+                                <button class="btn btn-secondary btn-more">Ver Grade Curricular</button>
                                 <div class="course-details">
                                     <h4>Informações do Curso:</h4>
-                                    <div class="course-highlights">
+                                                                                                                                                <div class="course-highlights">
                                         <div class="highlight-item">
                                             <span class="highlight-label">Título</span>
                                             <span class="highlight-value">Especialista</span>
@@ -338,69 +305,55 @@
                                     <div class="faculty-group">
                                         <strong>Professores:</strong>
                                         <div class="carousel-container">
-                                            <button class="carousel-btn prev-btn"
-                                                aria-label="Anterior">&#10094;</button>
+                                            <button class="carousel-btn prev-btn" aria-label="Anterior">&#10094;</button>
                                             <div class="faculty-avatars">
                                                 <div class="faculty-card">
-                                                    <img src="faculty/iama-henrique-gonzalez.webp"
-                                                        alt="Henrique Gonzalez">
+                                                    <img src="faculty/iama-henrique-gonzalez.webp" alt="Henrique Gonzalez">
                                                     <div class="faculty-info">
                                                         <div class="faculty-name">Henrique Gonzalez</div>
-                                                        <div class="faculty-title">ENGENHEIRO AMBIENTAL (UFRJ) E
-                                                            CO-FUNDADOR DA AMBIENTAL PRO</div>
+                                                        <div class="faculty-title">ENGENHEIRO AMBIENTAL (UFRJ) E CO-FUNDADOR DA AMBIENTAL PRO</div>
                                                     </div>
                                                 </div>
                                                 <div class="faculty-card">
-                                                    <img src="faculty/iama-hermann-fernandes.webp"
-                                                        alt="Hermann Fernandes">
+                                                    <img src="faculty/iama-hermann-fernandes.webp" alt="Hermann Fernandes">
                                                     <div class="faculty-info">
                                                         <div class="faculty-name">Hermann Fernandes</div>
-                                                        <div class="faculty-title">ENGENHEIRO AMBIENTAL (UFRJ) E
-                                                            ESPECIALISTA EM CIÊNCIA DE DADOS</div>
+                                                        <div class="faculty-title">ENGENHEIRO AMBIENTAL (UFRJ) E ESPECIALISTA EM CIÊNCIA DE DADOS</div>
                                                     </div>
                                                 </div>
                                                 <div class="faculty-card">
-                                                    <img src="faculty/iama-victor-valente-silvestre.webp"
-                                                        alt="Victor Valente Silvestre">
+                                                    <img src="faculty/iama-victor-valente-silvestre.webp" alt="Victor Valente Silvestre">
                                                     <div class="faculty-info">
                                                         <div class="faculty-name">Victor Valente Silvestre</div>
-                                                        <div class="faculty-title">ENGENHEIRO SANITARISTA E AMBIENTAL,
-                                                            MESTRE E PESQUISADOR</div>
+                                                        <div class="faculty-title">ENGENHEIRO SANITARISTA E AMBIENTAL, MESTRE E PESQUISADOR</div>
                                                     </div>
                                                 </div>
                                                 <div class="faculty-card">
-                                                    <img src="faculty/iama-vin-cius-ragghianti.webp"
-                                                        alt="Vinícius Ragghianti">
+                                                    <img src="faculty/iama-vin-cius-ragghianti.webp" alt="Vinícius Ragghianti">
                                                     <div class="faculty-info">
                                                         <div class="faculty-name">Vinícius Ragghianti</div>
-                                                        <div class="faculty-title">ENGENHEIRO AMBIENTAL E SANITARISTA,
-                                                            ADVOGADO, MBA EM GESTÃO DE PROJETOS</div>
+                                                        <div class="faculty-title">ENGENHEIRO AMBIENTAL E SANITARISTA, ADVOGADO, MBA EM GESTÃO DE PROJETOS</div>
                                                     </div>
                                                 </div>
                                                 <div class="faculty-card">
                                                     <img src="faculty/iama-ariel-dias.webp" alt="Ariel Dias">
                                                     <div class="faculty-info">
                                                         <div class="faculty-name">Ariel Dias</div>
-                                                        <div class="faculty-title">MESTRE EM CIÊNCIA DA COMPUTAÇÃO E
-                                                            AUTOR</div>
+                                                        <div class="faculty-title">MESTRE EM CIÊNCIA DA COMPUTAÇÃO E AUTOR</div>
                                                     </div>
                                                 </div>
                                                 <div class="faculty-card">
-                                                    <img src="faculty/iama-lu-s-ot-vio-perin.webp"
-                                                        alt="Luís Otávio Perin">
+                                                    <img src="faculty/iama-lu-s-ot-vio-perin.webp" alt="Luís Otávio Perin">
                                                     <div class="faculty-info">
                                                         <div class="faculty-name">Luís Otávio Perin</div>
-                                                        <div class="faculty-title">ESPECIALISTA EM DESENVOLVIMENTO DE
-                                                            SOFTWARE E CIÊNCIAS CONTÁBEIS</div>
+                                                        <div class="faculty-title">ESPECIALISTA EM DESENVOLVIMENTO DE SOFTWARE E CIÊNCIAS CONTÁBEIS</div>
                                                     </div>
                                                 </div>
                                                 <div class="faculty-card">
-                                                    <img src="faculty/iama-danilo-moreira-soares.webp"
-                                                        alt="Danilo Moreira Soares">
+                                                    <img src="faculty/iama-danilo-moreira-soares.webp" alt="Danilo Moreira Soares">
                                                     <div class="faculty-info">
                                                         <div class="faculty-name">Danilo Moreira Soares</div>
-                                                        <div class="faculty-title">COORDENADOR DE TI E MESTRE EM
-                                                            ADMINISTRAÇÃO</div>
+                                                        <div class="faculty-title">COORDENADOR DE TI E MESTRE EM ADMINISTRAÇÃO</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -425,7 +378,7 @@
                             </div>
                         </div>
                     </div>
-
+                    
                     <!-- Course 4 -->
                     <div class="course-card">
                         <div class="card-content">
@@ -433,14 +386,13 @@
                             <div class="course-info">
                                 <div class="course-category">PÓS-GRADUAÇÃO</div>
                                 <h3 class="course-title">Auditoria, Licenciamento e Perícia Ambiental</h3>
-                                <p class="course-desc">Pós-Graduação prática com estudos de caso, auditorias e uso de
-                                    SIG (QGIS) alinhados às demandas do mercado e normas internacionais.</p>
-                                <p class="course-price">Valor integral: <strong>R$ 11.970,00</strong> <span
-                                        class="price-note">(sem desconto)</span></p>
-                                <button class="btn btn-secondary btn-more">Saiba mais</button>
+                                <p class="course-desc">Pós-Graduação prática com estudos de caso, auditorias e uso de SIG (QGIS) alinhados às demandas do mercado e normas internacionais.</p>
+                                <p class="course-price" id="price-ida" data-base="11970">Valor integral: <strong>R$ 11.970,00</strong></p>
+                                <a href="#" id="checkout-ida" class="btn btn-primary" style="margin-bottom: 10px; display: block; text-align: center;">FAZER MINHA MATRÍCULA</a>
+                                <button class="btn btn-secondary btn-more">Ver Grade Curricular</button>
                                 <div class="course-details">
                                     <h4>Informações do Curso:</h4>
-                                    <div class="course-highlights">
+                                                                                                                                                <div class="course-highlights">
                                         <div class="highlight-item">
                                             <span class="highlight-label">Título</span>
                                             <span class="highlight-value">Especialista</span>
@@ -461,12 +413,10 @@
                                     <div class="faculty-group">
                                         <strong>Professores:</strong>
                                         <div class="carousel-container">
-                                            <button class="carousel-btn prev-btn"
-                                                aria-label="Anterior">&#10094;</button>
+                                            <button class="carousel-btn prev-btn" aria-label="Anterior">&#10094;</button>
                                             <div class="faculty-avatars">
                                                 <div class="faculty-card">
-                                                    <img src="faculty/alpa-henrique-gonzalez.webp"
-                                                        alt="Henrique Gonzalez">
+                                                    <img src="faculty/alpa-henrique-gonzalez.webp" alt="Henrique Gonzalez">
                                                     <div class="faculty-info">
                                                         <div class="faculty-name">Henrique Gonzalez</div>
                                                         <div class="faculty-title">Engenheiro Ambiental (UFRJ)</div>
@@ -480,8 +430,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="faculty-card">
-                                                    <img src="faculty/alpa-bruna-balestrin-piaia.webp"
-                                                        alt="Bruna Balestrin Piaia">
+                                                    <img src="faculty/alpa-bruna-balestrin-piaia.webp" alt="Bruna Balestrin Piaia">
                                                     <div class="faculty-info">
                                                         <div class="faculty-name">Bruna Balestrin Piaia</div>
                                                         <div class="faculty-title">Doutora em Engenharia Florestal</div>
@@ -491,17 +440,14 @@
                                                     <img src="faculty/alpa-hugo-ferreira.webp" alt="Hugo Ferreira">
                                                     <div class="faculty-info">
                                                         <div class="faculty-name">Hugo Ferreira</div>
-                                                        <div class="faculty-title">Mestre em Gestão de Riscos (UFPA)
-                                                        </div>
+                                                        <div class="faculty-title">Mestre em Gestão de Riscos (UFPA)</div>
                                                     </div>
                                                 </div>
                                                 <div class="faculty-card">
-                                                    <img src="faculty/alpa-anelise-gomes-da-silva.webp"
-                                                        alt="Anelise Gomes da Silva">
+                                                    <img src="faculty/alpa-anelise-gomes-da-silva.webp" alt="Anelise Gomes da Silva">
                                                     <div class="faculty-info">
                                                         <div class="faculty-name">Anelise Gomes da Silva</div>
-                                                        <div class="faculty-title">Doutoranda em Ciências Ambientais
-                                                            (USP)</div>
+                                                        <div class="faculty-title">Doutoranda em Ciências Ambientais (USP)</div>
                                                     </div>
                                                 </div>
                                                 <div class="faculty-card">
@@ -512,8 +458,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="faculty-card">
-                                                    <img src="faculty/alpa-j-ssica-michalak-besen.webp"
-                                                        alt="Jéssica Michalak Besen">
+                                                    <img src="faculty/alpa-j-ssica-michalak-besen.webp" alt="Jéssica Michalak Besen">
                                                     <div class="faculty-info">
                                                         <div class="faculty-name">Jéssica Michalak Besen</div>
                                                         <div class="faculty-title">Engenheira Ambiental (PUC-PR)</div>
@@ -544,29 +489,24 @@
                 </div>
             </div>
         </section>
-    </main>
 
-    <section class="cta-section text-center"
-        style="padding: 60px 20px; background: rgba(111, 176, 58, 0.05); border-top: 1px solid rgba(255,255,255,0.05); margin-top: 60px;">
-        <div class="container">
-            <h2 style="font-size: 2rem; margin-bottom: 20px; color: var(--green-1);">Ainda tem dúvidas?</h2>
-            <p style="font-size: 1.1rem; color: #555; max-width: 600px; margin: 0 auto 30px auto; line-height: 1.6;">
-                Nossa equipe está pronta para ajudar você a entender tudo sobre a Prova da Bolsa e as nossas
-                pós-graduações.
-            </p>
-            <a href="https://api.whatsapp.com/send?phone=5521988773695&text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20a%20Prova%20da%20Bolsa%20e%20as%20pós-graduações."
-                target="_blank" class="btn btn-primary"
-                style="font-size: 1.2rem; padding: 15px 40px; display: inline-flex; align-items: center; justify-content: center; gap: 10px;">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path
-                        d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
-                    </path>
-                </svg>
-                Falar com a Equipe no WhatsApp
-            </a>
-        </div>
-    </section>
+        <section class="cta-section text-center" style="padding: 60px 20px; background: rgba(111, 176, 58, 0.05); border-top: 1px solid rgba(255,255,255,0.05); margin-top: 60px;">
+            <div class="container">
+                <h2 style="font-size: 2rem; margin-bottom: 20px; color: var(--green-1);">Ainda tem dúvidas?</h2>
+                <p style="font-size: 1.1rem; color: #555; max-width: 600px; margin: 0 auto 30px auto; line-height: 1.6;">
+                    Nossa equipe está pronta para ajudar você a escolher a melhor pós-graduação para a sua carreira e aproveitar seu desconto.
+                </p>
+                <a href="https://api.whatsapp.com/send?phone=5521988773695&text=Olá!%20Acabei%20de%20fazer%20a%20Prova%20da%20Bolsa%20e%20gostaria%20de%20tirar%20algumas%20dúvidas." 
+                   target="_blank" 
+                   class="btn btn-primary" 
+                   style="font-size: 1.2rem; padding: 15px 40px; display: inline-flex; align-items: center; gap: 10px;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                    </svg>
+                    Falar com a Equipe no WhatsApp
+                </a>
+            </div>
+        </section>
 
     <footer class="footer">
         <div class="container text-center">
@@ -574,7 +514,28 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="matricula.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            const defaults = { 
+                origin: { y: 1 }, 
+                colors: ['#6FB03A', '#25D366', '#ffffff'],
+                zIndex: 10000 
+            };
+
+            function fire(particleRatio, opts) {
+                confetti(Object.assign({}, defaults, opts, {
+                    particleCount: Math.floor(600 * particleRatio)
+                }));
+            }
+
+            // Tiro da esquerda
+            fire(0.7, { spread: 80, startVelocity: 70, angle: 60, origin: { x: 0, y: 1 } });
+            // Tiro da direita
+            fire(0.7, { spread: 80, startVelocity: 70, angle: 120, origin: { x: 1, y: 1 } });
+        });
+    </script>
 
     <!-- Modal Formulário -->
     <div id="leadModal" class="modal">
@@ -587,24 +548,22 @@
                     <label for="nome">Seu nome</label>
                     <input type="text" id="nome" name="nome" required placeholder="Digite seu nome completo">
                 </div>
-
+                
                 <div class="form-group">
                     <label for="email">Seu email</label>
                     <input type="email" id="email" name="email" required placeholder="Digite seu melhor email">
                 </div>
-
+                
                 <div class="form-group">
                     <label for="telefone">Seu telefone (com DDD)</label>
-                    <input type="tel" id="telefone" name="telefone" required maxlength="11"
-                        placeholder="Ex: 11987654321">
+                    <input type="tel" id="telefone" name="telefone" required maxlength="11" placeholder="Ex: 11987654321">
                 </div>
-
+                
                 <div class="form-group">
                     <label for="area">Qual é a sua área de formação?</label>
-                    <input type="text" id="area" name="area" required
-                        placeholder="Ex: Engenharia Ambiental, Biologia, etc.">
+                    <input type="text" id="area" name="area" required placeholder="Ex: Engenharia Ambiental, Biologia, etc.">
                 </div>
-
+                
                 <div class="form-group">
                     <label>Você possui graduação completa?</label>
                     <div class="radio-group">
@@ -612,12 +571,11 @@
                         <label><input type="radio" name="graduacao" value="Não" required> Não</label>
                     </div>
                 </div>
-
+                
                 <button type="submit" class="btn btn-primary btn-submit">ENVIAR MINHA INSCRIÇÃO</button>
             </form>
         </div>
     </div>
 
 </body>
-
 </html>

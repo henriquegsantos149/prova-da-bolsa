@@ -145,10 +145,21 @@ document.addEventListener('DOMContentLoaded', () => {
     if (leadForm) {
         leadForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            // You can add the logic to send the data here
-            alert('Sua inscrição foi enviada com sucesso! Entraremos em contato em breve.');
-            modal.style.display = 'none';
-            leadForm.reset();
+            
+            const nomeInput = document.getElementById('nome');
+            const emailInput = document.getElementById('email');
+            const telefoneInput = document.getElementById('telefone');
+            const areaInput = document.getElementById('area');
+            const graduacaoInput = document.querySelector('input[name="graduacao"]:checked');
+            
+            if (nomeInput) localStorage.setItem('ambientalpro_lead_nome', nomeInput.value);
+            if (emailInput) localStorage.setItem('ambientalpro_lead_email', emailInput.value);
+            if (telefoneInput) localStorage.setItem('ambientalpro_lead_telefone', telefoneInput.value);
+            if (areaInput) localStorage.setItem('ambientalpro_lead_area', areaInput.value);
+            if (graduacaoInput) localStorage.setItem('ambientalpro_lead_graduacao', graduacaoInput.value);
+            
+            // Redireciona para a página da prova
+            window.location.href = 'prova.html';
         });
     }
 
