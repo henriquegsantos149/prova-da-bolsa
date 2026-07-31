@@ -332,7 +332,7 @@ h6 {
 }
 
 .hero-title {
-    font-size: 4.5rem;
+    font-size: 4.0rem;
     margin-bottom: 20px;
     color: var(--light-gray);
 }
@@ -346,8 +346,8 @@ h6 {
 }
 
 .hero-subtitle {
-    font-size: 1.25rem;
-    max-width: 800px;
+    font-size: 1.1rem;
+    max-width: 550px;
     margin: 0 auto 40px auto;
     color: #a0a0a0;
 }
@@ -365,9 +365,25 @@ h6 {
     border: none;
 }
 
-.hero-actions .btn {
+.hero-bottom-actions .btn {
     padding: 16px 40px;
     font-size: 1.1rem;
+}
+
+.hero-bottom-actions {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+}
+
+.hero-bottom-actions .scroll-down-arrow {
+    margin-top: 0;
 }
 
 
@@ -454,6 +470,71 @@ h6 {
     /* Cor clara */
     color: #333;
     /* Texto escuro */
+}
+
+/* Modal Customizado de Confirmação */
+.custom-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(1, 4, 4, 0.85); /* brand dark with opacity */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    backdrop-filter: blur(5px);
+}
+
+.custom-modal {
+    background-color: var(--primary-dark);
+    border: 1px solid var(--green-2);
+    border-radius: 12px;
+    padding: 30px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.custom-modal-title {
+    color: var(--green-1);
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.custom-modal-text {
+    color: var(--light-gray);
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+}
+
+.custom-modal-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* Sticky CTA */
+.sticky-cta {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+}
+
+.sticky-cta.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
 }
 
 .section-title {

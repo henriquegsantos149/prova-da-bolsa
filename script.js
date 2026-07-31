@@ -110,6 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Modal Logic
     const modal = document.getElementById('leadModal');
     const btnOpenModal = document.getElementById('btn-open-modal');
+    const stickyCta = document.getElementById('sticky-cta');
     const spanClose = document.querySelector('.close-modal');
     const leadForm = document.getElementById('leadForm');
     const telefoneInput = document.getElementById('telefone');
@@ -119,6 +120,29 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             modal.style.display = 'block';
         });
+    }
+
+    if (stickyCta) {
+        stickyCta.addEventListener('click', (e) => {
+            e.preventDefault();
+            modal.style.display = 'block';
+        });
+
+        const heroSection = document.querySelector('.hero-section');
+        if (heroSection) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        stickyCta.classList.add('visible');
+                    } else {
+                        stickyCta.classList.remove('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            observer.observe(heroSection);
+        }
     }
 
     if (spanClose) {

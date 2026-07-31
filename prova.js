@@ -345,8 +345,27 @@ document.addEventListener('DOMContentLoaded', () => {
             currentQuestionIndex++;
             renderQuestion(currentQuestionIndex);
         } else {
-            if (confirm('Tem certeza que deseja finalizar a prova?')) {
-                calculateScoreAndRedirect();
+            // Mostrar Modal Customizado
+            const modal = document.getElementById('custom-confirm-modal');
+            if (modal) {
+                modal.style.display = 'flex';
+                
+                const btnConfirm = document.getElementById('btn-confirm-modal');
+                const btnCancel = document.getElementById('btn-cancel-modal');
+                
+                btnConfirm.onclick = () => {
+                    modal.style.display = 'none';
+                    calculateScoreAndRedirect();
+                };
+                
+                btnCancel.onclick = () => {
+                    modal.style.display = 'none';
+                };
+            } else {
+                // Fallback de segurança
+                if (confirm('Tem certeza que deseja finalizar a prova?')) {
+                    calculateScoreAndRedirect();
+                }
             }
         }
     });
