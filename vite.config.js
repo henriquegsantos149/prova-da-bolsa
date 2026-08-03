@@ -5,7 +5,8 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, "index.html"),
-        matricula: resolve(__dirname, "matricula.html")
+        prova: resolve(__dirname, "prova/index.html"),
+        matricula: resolve(__dirname, "matricula/index.html")
       }
     }
   }

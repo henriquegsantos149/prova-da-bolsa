@@ -91,13 +91,13 @@ h6 {
 .course-details {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.4s ease-out, margin-top 0.4s ease-out, opacity 0.4s ease-out;
+    transition: max-height 0.8s ease-out, margin-top 0.4s ease-out, opacity 0.4s ease-out;
     opacity: 0;
     margin-top: 0;
 }
 
 .course-details.active {
-    max-height: 1000px;
+    max-height: 8000px;
     opacity: 1;
     margin-top: 20px;
 }
@@ -213,6 +213,8 @@ h6 {
 
 .faculty-avatars {
     display: flex;
+    flex: 1;
+    min-width: 0;
     flex-wrap: nowrap;
     gap: 15px;
     overflow-x: auto;
@@ -253,6 +255,7 @@ h6 {
     height: 85px;
     border-radius: 8px;
     object-fit: cover;
+    object-position: top;
     margin-bottom: 12px;
     border: 1px solid var(--green-2);
 }
@@ -312,7 +315,7 @@ h6 {
 
 /* Hero Section */
 .hero-section {
-    min-height: 100vh;
+    min-height: 100dvh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -399,6 +402,11 @@ h6 {
 .btn-primary:hover {
     transform: translateY(-3px);
     box-shadow: 0 15px 25px rgba(49, 168, 168, 0.4);
+}
+
+.btn-whatsapp {
+    font-size: 1.2rem;
+    padding: 15px 40px;
 }
 
 .btn-full {
@@ -666,6 +674,33 @@ h6 {
 }
 
 @media (max-width: 768px) {
+    .about-content p {
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+
+
+    .results-stats {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+    .stat-box {
+        width: 100%;
+        max-width: 300px;
+        padding: 15px 20px;
+    }
+    .results-title {
+        font-size: 2.2rem;
+    }
+    .results-hero {
+        padding: 100px 15px 40px 15px;
+    }
+    .results-hero p {
+        font-size: 1rem;
+        padding: 0 10px;
+    }
+
     .hero-title {
         font-size: 2.8rem;
     }
@@ -714,25 +749,56 @@ h6 {
 
 @media (max-width: 480px) {
     .hero-section {
-        padding: 80px 0;
+        padding: 60px 0;
+        min-height: 100dvh;
     }
 
     .hero-title {
-        font-size: 2.3rem;
+        font-size: 1.8rem;
+    }
+
+    .btn {
+        white-space: normal;
+        max-width: 95%;
+    }
+
+    .btn-whatsapp {
+        font-size: 1rem;
+        padding: 12px 20px;
+    }
+
+    .hero-bottom-actions .btn {
+        padding: 12px 20px;
+        font-size: 1rem;
+        max-width: 95%;
     }
 
     .course-title {
         font-size: 1.35rem;
     }
 
-    /* Stack highlights to prevent text overflow on very small screens */
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    /* Keep 2 columns on mobile but reduce padding and font size so it fits well */
     .course-highlights {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
     }
 
     .highlight-item {
         align-items: center;
         text-align: center;
+        padding: 10px;
+    }
+
+    .highlight-label {
+        font-size: 0.7rem;
+    }
+
+    .highlight-value {
+        font-size: 0.95rem;
     }
 
     .carousel-btn {
@@ -741,9 +807,13 @@ h6 {
         font-size: 1rem;
     }
 
+    .faculty-avatars {
+        scroll-snap-type: x mandatory;
+    }
+
     .faculty-card {
-        flex: 0 0 140px;
-        /* Slightly narrower cards on small phones */
+        flex: 0 0 100%;
+        scroll-snap-align: center;
     }
 }
 
@@ -1183,4 +1253,55 @@ h6 {
     60% {
         transform: translateY(-7px);
     }
+}
+/* Grade Dropdown */
+.grade-dropdown {
+    margin-top: 25px;
+    border: 1px solid rgba(49, 168, 168, 0.3);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.grade-toggle {
+    background: rgba(49, 168, 168, 0.1);
+    color: var(--green-2);
+    font-size: 1.1rem;
+    padding: 15px;
+    margin: 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s;
+}
+
+.grade-toggle:hover {
+    background: rgba(49, 168, 168, 0.2);
+}
+
+.grade-arrow {
+    font-size: 0.9rem;
+    transition: transform 0.3s ease;
+}
+
+.grade-dropdown.active .grade-arrow {
+    transform: rotate(180deg);
+}
+
+.grade-content {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.4s ease-out, padding 0.4s ease-out;
+    padding: 0 15px;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.grade-dropdown.active .grade-content {
+    grid-template-rows: 1fr;
+    padding: 15px;
+}
+
+.grade-content > ul {
+    overflow: hidden;
+    margin: 0;
 }

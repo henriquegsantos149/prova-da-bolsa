@@ -53,6 +53,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    
+    // Grade Dropdown Logic
+    const gradeToggles = document.querySelectorAll('.grade-toggle');
+    gradeToggles.forEach(toggle => {
+        toggle.addEventListener('click', () => {
+            const dropdown = toggle.closest('.grade-dropdown');
+            dropdown.classList.toggle('active');
+        });
+    });
+
     // Carousel Logic
     const prevButtons = document.querySelectorAll('.prev-btn');
     const nextButtons = document.querySelectorAll('.next-btn');
@@ -88,6 +98,9 @@ document.addEventListener('DOMContentLoaded', () => {
     prevButtons.forEach(btn => {
         btn.addEventListener('click', (e) => {
             const container = e.target.closest('.carousel-container').querySelector('.faculty-avatars');
+            const card = container.querySelector('.faculty-card');
+            const scrollAmount = card ? card.offsetWidth + 15 : 175; // 15 is the gap
+            
             // If we're exactly at 0, jump to the middle first so we can smoothly scroll left
             if (container.scrollLeft <= 0) {
                 container.style.scrollBehavior = 'auto';
@@ -95,15 +108,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 container.offsetHeight; // Force reflow
             }
             container.style.scrollBehavior = 'smooth';
-            container.scrollBy({ left: -175, behavior: 'smooth' });
+            container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
         });
     });
     
     nextButtons.forEach(btn => {
         btn.addEventListener('click', (e) => {
             const container = e.target.closest('.carousel-container').querySelector('.faculty-avatars');
+            const card = container.querySelector('.faculty-card');
+            const scrollAmount = card ? card.offsetWidth + 15 : 175;
+            
             container.style.scrollBehavior = 'smooth';
-            container.scrollBy({ left: 175, behavior: 'smooth' });
+            container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
         });
     });
 
@@ -183,8 +199,29 @@ document.addEventListener('DOMContentLoaded', () => {
             if (graduacaoInput) localStorage.setItem('ambientalpro_lead_graduacao', graduacaoInput.value);
             
             // Redireciona para a página da prova
-            window.location.href = 'prova.html';
+            window.location.href = 'prova/';
         });
     }
 
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const graduacaoRadios = document.querySelectorAll('input[name="graduacao"]');
+    const formGroupArea = document.getElementById('form-group-area');
+    const inputArea = document.getElementById('area');
+
+    if (graduacaoRadios.length > 0 && formGroupArea && inputArea) {
+        graduacaoRadios.forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                if (e.target.value === 'Sim') {
+                    formGroupArea.style.display = 'block';
+                    inputArea.setAttribute('required', 'required');
+                } else {
+                    formGroupArea.style.display = 'none';
+                    inputArea.removeAttribute('required');
+                    inputArea.value = ''; // clear value if they change mind
+                }
+            });
+        });
+    }
 });

@@ -331,15 +331,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: JSON.stringify(payload),
                 mode: 'no-cors' // Google Script requires no-cors when accessed directly from browser without proper CORS headers
             }).then(() => {
-                setTimeout(() => { window.location.href = 'matricula.html'; }, 1000);
+                setTimeout(() => { window.location.href = '../matricula/'; }, 1000);
             }).catch(err => {
                 console.error("Erro ao salvar:", err);
-                setTimeout(() => { window.location.href = 'matricula.html'; }, 1000);
+                setTimeout(() => { window.location.href = '../matricula/'; }, 1000);
             });
         } else {
             // Se a URL não estiver configurada, apenas redireciona
             setTimeout(() => {
-                window.location.href = 'matricula.html';
+                window.location.href = '../matricula/';
             }, 1500);
         }
     }
