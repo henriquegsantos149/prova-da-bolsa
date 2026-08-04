@@ -682,14 +682,25 @@ h6 {
 
 
     .results-stats {
-        flex-direction: column;
+        flex-direction: row;
         gap: 15px;
-        align-items: center;
+        align-items: stretch;
+        justify-content: center;
     }
     .stat-box {
-        width: 100%;
-        max-width: 300px;
-        padding: 15px 20px;
+        width: 50%;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .stat-value {
+        font-size: 1.7rem !important;
+    }
+    .stat-label {
+        font-size: 0.75rem !important;
+        white-space: nowrap;
     }
     .results-title {
         font-size: 2.2rem;
@@ -759,8 +770,10 @@ h6 {
     }
 
     .btn {
-        white-space: normal;
-        max-width: 95%;
+        white-space: nowrap;
+        font-size: 0.95rem;
+        max-width: 98%;
+        padding: 12px 10px;
     }
 
     .btn-whatsapp {
@@ -1305,4 +1318,100 @@ h6 {
 .grade-content > ul {
     overflow: hidden;
     margin: 0;
+}
+
+
+/* Botão CTA Verde */
+.btn-cta-green {
+    display: inline-block;
+    padding: 18px 40px;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    background: linear-gradient(135deg, #4ade80, #16a34a);
+    border: none;
+    font-weight: 700;
+    text-decoration: none;
+    color: #000 !important;
+    box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+    cursor: pointer;
+    line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+    .btn-cta-green {
+        padding: 12px 20px;
+        font-size: 1rem;
+        border-radius: 30px;
+    }
+}
+
+
+.results-subtitle {
+    font-size: 1.2rem;
+    line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+    .results-subtitle {
+        font-size: 0.95rem;
+        line-height: 1.4;
+        padding: 0 10px;
+    }
+}
+
+
+.huge-discount-container {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.huge-score-text {
+    font-size: 8rem;
+    font-weight: 900;
+    line-height: 1;
+    background: linear-gradient(135deg, #4ade80, #22c55e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 40px rgba(34, 197, 94, 0.3);
+}
+
+.huge-score-label {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #4ade80;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-top: 5px;
+}
+
+@media (max-width: 768px) {
+    .huge-discount-container {
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+    .huge-score-text {
+        font-size: 3.2rem;
+    }
+    .huge-score-label {
+        font-size: 1.1rem;
+    }
+    .results-hero p.results-subtitle,
+    .results-hero .container>p:first-of-type {
+        font-size: 1rem !important;
+        line-height: 1.45 !important;
+        margin-bottom: 15px !important;
+        padding: 0 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .results-title {
+        font-size: 2.1rem !important;
+        line-height: 1.2;
+        white-space: nowrap;
+    }
+    .gradient-highlight {
+        padding: 4px 15px;
+    }
 }

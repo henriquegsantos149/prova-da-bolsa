@@ -12,12 +12,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const nome = localStorage.getItem('ambientalpro_lead_nome') || 'Olivio';
     const acertos = localStorage.getItem('ambientalpro_prova_acertos') || '0';
     const nota = localStorage.getItem('ambientalpro_prova_nota') || '0.0';
-    const desconto = localStorage.getItem('ambientalpro_prova_desconto') || '50';
-    
+    let desconto = localStorage.getItem('ambientalpro_prova_desconto') || '50';
+
     // Atualizar UI com resultados
     document.getElementById('user-name').textContent = nome.split(' ')[0]; // Primeiro nome
-    
+
     if (acertos === '0') {
+        desconto = '30';
         const titleH1 = document.querySelector('.results-title');
         if (titleH1) {
             titleH1.innerHTML = `Olá, <span id="user-name" class="gradient-highlight">${nome.split(' ')[0]}</span>!`;
@@ -32,13 +33,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (acertosEl) acertosEl.textContent = `${acertos}/12`;
     
     const notaEl = document.getElementById('score-nota');
-    if (notaEl) notaEl.textContent = nota.replace('.', ',');
-    
-    const descontoEl = document.getElementById('score-desconto');
-    if (descontoEl) descontoEl.textContent = `${desconto}%`;
-    
-    const textDescontoEl = document.getElementById('text-desconto');
-    if (textDescontoEl) textDescontoEl.textContent = `${desconto}%`;
+    if (notaEl) notaEl.textContent = Math.round(parseFloat(nota));
+
+    const hugeDescontoEl = document.getElementById('huge-score-desconto');
+    if (hugeDescontoEl) hugeDescontoEl.textContent = `${desconto}%`;
+
+    const ctaDescontoEl = document.getElementById('cta-desconto');
+    if (ctaDescontoEl) ctaDescontoEl.textContent = `${desconto}%!`;
 
     // 2. Calcular preços dinâmicos
     const descMult = 1 - (parseFloat(desconto) / 100);
@@ -105,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Toggle course details
     const moreButtons = document.querySelectorAll('.btn-more');
     moreButtons.forEach(btn => {
-        btn.addEventListener('click', function() {
+        btn.addEventListener('click', function () {
             const details = this.nextElementSibling;
             if (details && details.classList.contains('course-details')) {
                 details.classList.toggle('active');
@@ -121,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Carousel Logic
     const prevButtons = document.querySelectorAll('.prev-btn');
     const nextButtons = document.querySelectorAll('.next-btn');
-    
+
     document.querySelectorAll('.faculty-avatars').forEach(container => {
         setTimeout(() => {
             if (container.scrollWidth > container.clientWidth) {
@@ -136,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (container.scrollLeft >= half) {
                         container.style.scrollBehavior = 'auto';
                         container.scrollLeft -= half;
-                    } 
+                    }
                     else if (container.scrollLeft <= 0) {
                         container.style.scrollBehavior = 'auto';
                         container.scrollLeft += half;
@@ -152,13 +153,13 @@ document.addEventListener('DOMContentLoaded', () => {
             if (container.scrollLeft <= 0) {
                 container.style.scrollBehavior = 'auto';
                 container.scrollLeft += container.scrollWidth / 2;
-                container.offsetHeight; 
+                container.offsetHeight;
             }
             container.style.scrollBehavior = 'smooth';
             container.scrollBy({ left: -175, behavior: 'smooth' });
         });
     });
-    
+
     nextButtons.forEach(btn => {
         btn.addEventListener('click', (e) => {
             const container = e.target.closest('.carousel-container').querySelector('.faculty-avatars');
@@ -166,4 +167,33 @@ document.addEventListener('DOMContentLoaded', () => {
             container.scrollBy({ left: 175, behavior: 'smooth' });
         });
     });
+
+    // Lógica do cronômetro (até 23:59:59 do dia atual)
+    const timerElement = document.getElementById('countdown-timer');
+    if (timerElement) {
+        function updateTimer() {
+            const now = new Date();
+            const endOfDay = new Date();
+            endOfDay.setHours(23, 59, 59, 999);
+
+            const diff = endOfDay - now;
+
+            if (diff <= 0) {
+                timerElement.textContent = "00:00:00";
+                return;
+            }
+
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((diff / 1000 / 60) % 60);
+            const seconds = Math.floor((diff / 1000) % 60);
+
+            timerElement.textContent =
+                String(hours).padStart(2, '0') + ':' +
+                String(minutes).padStart(2, '0') + ':' +
+                String(seconds).padStart(2, '0');
+        }
+
+        updateTimer();
+        setInterval(updateTimer, 1000);
+    }
 });
