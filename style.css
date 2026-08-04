@@ -1415,3 +1415,12 @@ h6 {
         padding: 4px 15px;
     }
 }
+
+@media (max-width: 768px) {
+    .timer-container {
+        position: static !important;
+        transform: none !important;
+        font-size: 2.2rem !important;
+        padding: 5px 10px !important;
+    }
+}

@@ -85,22 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
     });
 
-    // 3. Atualizar links de checkout dinamicamente com base no desconto
-    // Você pode alterar as URLs base para as do Hotmart/Eduzz depois
-    const checkoutGgsr = document.getElementById('checkout-ggsr');
-    if (checkoutGgsr) {
-        checkoutGgsr.href = `https://checkout.ambientalpro.com/ggsr/${desconto}off`;
-    }
-
-    const checkoutIdas = document.querySelectorAll('[id^="checkout-ida"]');
-    checkoutIdas.forEach(checkoutEl => {
-        checkoutEl.href = `https://checkout.ambientalpro.com/ida/${desconto}off`;
-    });
-
-    const checkoutGrac = document.getElementById('checkout-grac');
-    if (checkoutGrac) {
-        checkoutGrac.href = `https://checkout.ambientalpro.com/grac/${desconto}off`;
-    }
+    // Os links de checkout não são mais atualizados dinamicamente pelo JS.
 
     // Lógica do carrossel e botões de "Ver Grade Curricular" (Copiado do script.js original)
     // Toggle course details
