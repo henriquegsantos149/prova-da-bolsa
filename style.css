@@ -59,6 +59,7 @@ body {
         radial-gradient(circle at 15% 50%, rgba(111, 176, 58, 0.15) 0%, transparent 50%),
         radial-gradient(circle at 85% 30%, rgba(49, 168, 168, 0.15) 0%, transparent 50%);
     z-index: -1;
+    pointer-events: none;
 }
 
 /* Container */
