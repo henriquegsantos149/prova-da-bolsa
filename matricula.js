@@ -9,7 +9,7 @@ window.scrollTo(0, 0);
 
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Recuperar dados do localStorage
-    const nome = localStorage.getItem('ambientalpro_lead_nome') || 'Candidato';
+    const nome = localStorage.getItem('ambientalpro_lead_nome') || 'Olivio';
     const acertos = localStorage.getItem('ambientalpro_prova_acertos') || '0';
     const nota = localStorage.getItem('ambientalpro_prova_nota') || '0.0';
     const desconto = localStorage.getItem('ambientalpro_prova_desconto') || '50';
@@ -36,6 +36,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const descontoEl = document.getElementById('score-desconto');
     if (descontoEl) descontoEl.textContent = `${desconto}%`;
+    
+    const textDescontoEl = document.getElementById('text-desconto');
+    if (textDescontoEl) textDescontoEl.textContent = `${desconto}%`;
 
     // 2. Calcular preços dinâmicos
     const descMult = 1 - (parseFloat(desconto) / 100);
