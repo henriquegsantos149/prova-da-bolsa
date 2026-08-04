@@ -770,6 +770,10 @@ h6 {
     .hero-title {
         font-size: 1.8rem;
     }
+    
+    .mobile-break {
+        display: block;
+    }
 
     .btn {
         white-space: normal;
