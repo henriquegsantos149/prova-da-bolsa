@@ -71,6 +71,10 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="dynamic-price">Por: ${formatBRL(discounted)} <span style="font-size: 1rem; font-weight: normal; color: #a0aec0;">à vista</span></div>
             <div style="font-size: 0.9rem; color: var(--primary-color);">Parcele em até 12x no cartão</div>
         `;
+        const btn = priceGgsr.nextElementSibling;
+        if (btn && btn.tagName === 'A') {
+            btn.href = `/api/checkout?curso=ggsr&desconto=${desconto}`;
+        }
     }
 
     // Atualizar MBA IDA (R$ 11.970,00) - Isso vai aplicar a todos os MBAs
@@ -83,6 +87,11 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="dynamic-price">Por: ${formatBRL(discounted)} <span style="font-size: 1rem; font-weight: normal; color: #a0aec0;">à vista</span></div>
             <div style="font-size: 0.9rem; color: var(--primary-color);">Parcele em até 12x no cartão</div>
         `;
+        const btn = priceEl.nextElementSibling;
+        if (btn && btn.tagName === 'A') {
+            const curso = priceEl.id.split('-')[1]; // ida, iama, alpa
+            btn.href = `/api/checkout?curso=${curso}&desconto=${desconto}`;
+        }
     });
 
     // Atualizar Pós GRAC (R$ 9.700,00)
@@ -95,6 +104,10 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="dynamic-price">Por: ${formatBRL(discounted)} <span style="font-size: 1rem; font-weight: normal; color: #a0aec0;">à vista</span></div>
             <div style="font-size: 0.9rem; color: var(--primary-color);">Parcele em até 12x no cartão</div>
         `;
+        const btn = priceEl.nextElementSibling;
+        if (btn && btn.tagName === 'A') {
+            btn.href = `/api/checkout?curso=grac&desconto=${desconto}`;
+        }
     });
 
     // Os links de checkout não são mais atualizados dinamicamente pelo JS.
