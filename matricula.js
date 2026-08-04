@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
             titleH1.innerHTML = `Olá, <span id="user-name" class="gradient-highlight">${nome.split(' ')[0]}</span>!`;
         }
         if (subtitleEl) {
-            subtitleEl.textContent = 'Você não alcançou nota mínima, mas não desanime! Aproveite o desconto abaixo e aprimore seus conhecimentos para tornar-se um especialista valorizado na área ambiental.';
+            subtitleEl.textContent = 'Aproveite essa oportunidade para aprofundar seus conhecimentos na área ambiental. Sua participação garantiu';
         }
     }
 
