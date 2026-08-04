@@ -772,10 +772,11 @@ h6 {
     }
 
     .btn {
-        white-space: nowrap;
-        font-size: 0.95rem;
-        max-width: 98%;
-        padding: 12px 10px;
+        white-space: normal;
+        font-size: 0.9rem;
+        max-width: 100%;
+        padding: 12px 15px;
+        line-height: 1.2;
     }
 
     .btn-whatsapp {
