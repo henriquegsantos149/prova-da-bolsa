@@ -269,21 +269,22 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Lógica de Desconto (fornecida)
-        // 10-12 acertos: 70%
-        // 7-9 acertos: 60%
-        // 0-6 acertos: 50%
+        // Lógica de Desconto
         let desconto = 30;
         let nota = 0.0;
         
         if (acertos >= 10) {
-            desconto = 70;
-        } else if (acertos >= 7) {
-            desconto = 60;
-        } else if (acertos >= 1) {
-            desconto = 50;
+            desconto = 70; // 10 a 12 acertos
+        } else if (acertos >= 8) {
+            desconto = 65; // 8 a 9 acertos
+        } else if (acertos === 7) {
+            desconto = 60; // 7 acertos
+        } else if (acertos === 6) {
+            desconto = 55; // 6 acertos
+        } else if (acertos >= 4) {
+            desconto = 50; // 4 a 5 acertos
         } else {
-            desconto = 30;
+            desconto = 30; // 0 a 3 acertos
         }
 
         // Mapeamento exato de nota

@@ -17,15 +17,27 @@ document.addEventListener('DOMContentLoaded', () => {
     // Atualizar UI com resultados
     document.getElementById('user-name').textContent = nome.split(' ')[0]; // Primeiro nome
 
-    if (acertos === '0') {
+    const numAcertos = parseInt(acertos, 10);
+    const subtitleEl = document.querySelector('.results-hero .container > p:first-of-type');
+    
+    if (numAcertos >= 10) {
+        if (subtitleEl) subtitleEl.textContent = 'Excelente desempenho! Sua nota desbloqueou um desconto exclusivo de';
+    } else if (numAcertos >= 8) {
+        if (subtitleEl) subtitleEl.textContent = 'Você conquistou uma excelente oportunidade:';
+    } else if (numAcertos === 7) {
+        if (subtitleEl) subtitleEl.textContent = 'Sua dedicação foi recompensada com';
+    } else if (numAcertos === 6) {
+        if (subtitleEl) subtitleEl.textContent = 'Você conquistou uma condição exclusiva para iniciar sua pós-graduação:';
+    } else if (numAcertos >= 4) {
+        if (subtitleEl) subtitleEl.textContent = 'Sua participação já garantiu uma excelente oportunidade:';
+    } else {
         desconto = '30';
         const titleH1 = document.querySelector('.results-title');
         if (titleH1) {
             titleH1.innerHTML = `Olá, <span id="user-name" class="gradient-highlight">${nome.split(' ')[0]}</span>!`;
         }
-        const subtitleEl = document.querySelector('.results-hero .container > p:first-of-type');
         if (subtitleEl) {
-            subtitleEl.textContent = 'Você não alcançou nota mínima, mas não se desanime! Aproveite 30% de desconto na pós-graduação e aprimore seus conhecimentos para tornar-se um especialista valorizado na área ambiental.';
+            subtitleEl.textContent = 'Você não alcançou nota mínima, mas não desanime! Aproveite o desconto abaixo e aprimore seus conhecimentos para tornar-se um especialista valorizado na área ambiental.';
         }
     }
 
