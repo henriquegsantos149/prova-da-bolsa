@@ -1165,7 +1165,7 @@ h6 {
 .results-hero {
     position: relative;
     text-align: center;
-    padding: 120px 20px 60px 20px;
+    padding: 100px 20px 30px 20px;
     /* Mais padding no topo para compensar o header absolute */
     min-height: 100vh;
     display: flex;
@@ -1180,8 +1180,8 @@ h6 {
 }
 
 .results-hero .container>p:first-of-type {
-    font-size: 1.2rem;
-    margin-bottom: 40px;
+    font-size: 1.05rem;
+    margin-bottom: 20px;
     color: #cbd5e1;
 }
 
@@ -1194,14 +1194,14 @@ h6 {
 
 .stat-box {
     background: rgba(0, 0, 0, 0.3);
-    padding: 15px 30px;
-    border-radius: 15px;
+    padding: 10px 20px;
+    border-radius: 12px;
     border: 1px solid rgba(111, 176, 58, 0.3);
 }
 
 .stat-value {
     font-family: 'Bebas Neue', cursive;
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     color: var(--primary-color);
     line-height: 1;
 }
@@ -1350,9 +1350,9 @@ h6 {
 
 
 .results-subtitle {
-    font-size: 1.2rem;
-    line-height: 1.4;
-    max-width: 800px;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    max-width: 750px;
     margin: 0 auto;
 }
 

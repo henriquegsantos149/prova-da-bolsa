@@ -20,24 +20,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const numAcertos = parseInt(acertos, 10);
     const subtitleEl = document.querySelector('.results-hero .container > p:first-of-type');
     
-    if (numAcertos >= 10) {
-        if (subtitleEl) subtitleEl.textContent = 'Excelente desempenho! Sua nota desbloqueou um desconto exclusivo de';
-    } else if (numAcertos >= 8) {
-        if (subtitleEl) subtitleEl.textContent = 'Você conquistou uma excelente oportunidade:';
-    } else if (numAcertos === 7) {
-        if (subtitleEl) subtitleEl.textContent = 'Sua dedicação foi recompensada com';
-    } else if (numAcertos === 6) {
-        if (subtitleEl) subtitleEl.textContent = 'Você conquistou uma condição exclusiva para iniciar sua pós-graduação:';
-    } else if (numAcertos >= 4) {
-        if (subtitleEl) subtitleEl.textContent = 'Sua participação já garantiu uma excelente oportunidade:';
-    } else {
+    if (numAcertos < 4) {
         desconto = '30';
+    }
+
+    const descontoNum = parseInt(desconto, 10) || 0;
+
+    if (descontoNum >= 60) {
+        if (subtitleEl) {
+            subtitleEl.innerHTML = 'Excelente resultado! Isso mostra seu compromisso com o crescimento profissional.<br>Nossa pós-graduação foi feita para quem deseja se destacar no mercado. Sua participação garantiu um desconto exclusivo de';
+        }
+    } else {
         const titleH1 = document.querySelector('.results-title');
         if (titleH1) {
             titleH1.innerHTML = `Olá, <span id="user-name" class="gradient-highlight">${nome.split(' ')[0]}</span>!`;
         }
         if (subtitleEl) {
-            subtitleEl.textContent = 'Aproveite essa oportunidade para aprofundar seus conhecimentos na área ambiental. Sua participação garantiu';
+            subtitleEl.innerHTML = 'Não se desanime com o resultado! Aproveite esta oportunidade para ampliar seus conhecimentos e construir uma carreira ainda mais sólida. O aprendizado contínuo faz toda a diferença na vida profissional. Sua participação garantiu';
         }
     }
 
