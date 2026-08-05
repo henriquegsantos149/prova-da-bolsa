@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (hugeDescontoEl) hugeDescontoEl.textContent = `${desconto}%`;
 
     const ctaDescontoEl = document.getElementById('cta-desconto');
-    if (ctaDescontoEl) ctaDescontoEl.textContent = `${desconto}%!`;
+    if (ctaDescontoEl) ctaDescontoEl.textContent = `${desconto}%`;
 
     // 2. Calcular preços dinâmicos
     const descMult = 1 - (parseFloat(desconto) / 100);
