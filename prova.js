@@ -324,24 +324,28 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbxYq0BAjUQClV1NM9xrdrdJxvgHuW8ZesafyOx3ZLSzoRVVixuTVQsyiI_3GqAwwd_P/exec';
+        
+        const startTime = Date.now();
+        const executeRedirect = () => {
+            const elapsed = Date.now() - startTime;
+            const remaining = Math.max(0, 1500 - elapsed);
+            setTimeout(() => { window.location.href = '../matricula/'; }, remaining);
+        };
 
         // Enviar os dados
         if (WEBHOOK_URL !== 'COLOQUE_SUA_URL_DO_APP_SCRIPT_AQUI') {
             fetch(WEBHOOK_URL, {
                 method: 'POST',
                 body: JSON.stringify(payload),
-                mode: 'no-cors' // Google Script requires no-cors when accessed directly from browser without proper CORS headers
+                mode: 'no-cors'
             }).then(() => {
-                setTimeout(() => { window.location.href = '../matricula/'; }, 1000);
+                executeRedirect();
             }).catch(err => {
                 console.error("Erro ao salvar:", err);
-                setTimeout(() => { window.location.href = '../matricula/'; }, 1000);
+                executeRedirect();
             });
         } else {
-            // Se a URL não estiver configurada, apenas redireciona
-            setTimeout(() => {
-                window.location.href = '../matricula/';
-            }, 1500);
+            executeRedirect();
         }
     }
 
@@ -373,7 +377,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 const btnCancel = document.getElementById('btn-cancel-modal');
                 
                 btnConfirm.onclick = () => {
-                    modal.style.display = 'none';
+                    const modalContent = modal.querySelector('.custom-modal');
+                    if (modalContent) {
+                        modalContent.innerHTML = `
+                            <div style="padding: 20px 0;">
+                                <p style="font-size: 1.2rem; font-weight: bold; margin: 0 0 15px 0; text-align: center; color: #22c55e;">Calculando resultado...</p>
+                                <div style="width: 100%; max-width: 250px; margin: 0 auto; height: 6px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden;">
+                                    <div id="calc-progress-bar" style="width: 0%; height: 100%; background: #22c55e; border-radius: 4px; transition: width 1.5s ease-in-out;"></div>
+                                </div>
+                            </div>
+                        `;
+                        
+                        setTimeout(() => {
+                            const bar = document.getElementById('calc-progress-bar');
+                            if (bar) bar.style.width = '100%';
+                        }, 50);
+                    }
+                    
                     calculateScoreAndRedirect();
                 };
                 
