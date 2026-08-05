@@ -181,6 +181,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Helper para pegar UTMs da URL
+    function getUTMs() {
+        const params = new URLSearchParams(window.location.search);
+        // Suporta tanto os utms padrão (minúsculos) quanto os com prefixo (maiúsculos) citados no exemplo
+        return {
+            utm_source: params.get('utm_source') || params.get('BOLSA_DE_ESTUDOS_UTM_SOURCE') || '',
+            utm_medium: params.get('utm_medium') || params.get('BOLSA_DE_ESTUDOS_UTM_MEDIUM') || '',
+            utm_campaign: params.get('utm_campaign') || params.get('BOLSA_DE_ESTUDOS_UTM_CAMPAIGN') || '',
+            utm_term: params.get('utm_term') || params.get('BOLSA_DE_ESTUDOS_UTM_TERM') || '',
+            utm_content: params.get('utm_content') || params.get('BOLSA_DE_ESTUDOS_UTM_CONTENT') || ''
+        };
+    }
+
     // Handle Form Submit
     if (leadForm) {
         leadForm.addEventListener('submit', (e) => {
@@ -192,12 +205,30 @@ document.addEventListener('DOMContentLoaded', () => {
             const areaInput = document.getElementById('area');
             const graduacaoInput = document.querySelector('input[name="graduacao"]:checked');
             
+            const payload = {
+                nome: nomeInput ? nomeInput.value : '',
+                email: emailInput ? emailInput.value : '',
+                telefone: telefoneInput ? telefoneInput.value : '',
+                area: areaInput ? areaInput.value : '',
+                graduacao: graduacaoInput ? graduacaoInput.value : '',
+                ...getUTMs()
+            };
+
             if (nomeInput) localStorage.setItem('ambientalpro_lead_nome', nomeInput.value);
             if (emailInput) localStorage.setItem('ambientalpro_lead_email', emailInput.value);
             if (telefoneInput) localStorage.setItem('ambientalpro_lead_telefone', telefoneInput.value);
             if (areaInput) localStorage.setItem('ambientalpro_lead_area', areaInput.value);
             if (graduacaoInput) localStorage.setItem('ambientalpro_lead_graduacao', graduacaoInput.value);
             
+            // Envia para a API sem bloquear o fluxo
+            fetch('/api/subscribe', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            }).catch(err => console.error("Erro ao integrar com ActiveCampaign:", err));
+
             // Redireciona para a página da prova
             window.location.href = 'prova/';
         });
