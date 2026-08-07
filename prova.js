@@ -1,59 +1,59 @@
 document.addEventListener('DOMContentLoaded', () => {
     const questions = [
         {
-            title: "Questão 1 – Geoprocessamento, Georreferenciamento e Sensoriamento Remoto",
-            supportText: "O geoprocessamento reúne técnicas de coleta, tratamento e análise de dados que possuem referência espacial. No setor ambiental, permite mapear áreas, medir extensões, cruzar informações de fontes diferentes e acompanhar mudanças no território ao longo do tempo.",
+            title: "Questão 1",
+            supportText: "O geoprocessamento reúne técnicas de coleta, tratamento e análise de dados que possuem referência espacial, ou seja, dados associados a uma posição no território. Com elas, transformam-se informações de diferentes origens em conhecimento sobre o espaço geográfico.",
             questionText: "Assinale a alternativa que apresenta uma aplicação típica do geoprocessamento na área ambiental:",
             options: [
                 "Mapeamento de áreas desmatadas e acompanhamento da cobertura vegetal ao longo dos anos.",
-                "Cálculo do balanço patrimonial de empresas dos setores de mineração e siderurgia.",
-                "Avaliação do desempenho e da produtividade das equipes de gestão ambiental.",
-                "Controle interno dos gastos com combustível da frota de fiscalização ambiental."
+                "Realização de oficinas de educação ambiental com estudantes da rede pública.",
+                "Determinação da concentração de metais em amostras de água coletadas em um rio.",
+                "Elaboração de pareceres jurídicos sobre a legislação ambiental aplicável a uma obra."
             ],
             // Resposta correta: 0
             hash: "MA=="
         },
         {
-            title: "Questão 2 – Auditoria, Licenciamento e Perícia Ambiental",
+            title: "Questão 2",
             supportText: "Em ações judiciais ambientais, o perito é nomeado pelo juízo e deve atuar com imparcialidade, enquanto cada parte pode indicar um assistente técnico de sua confiança. O Código de Processo Civil assegura aos assistentes o acesso aos autos e a possibilidade de se manifestar sobre o laudo pericial.",
             questionText: "Sobre a atuação do perito e dos assistentes técnicos, assinale a alternativa correta:",
             options: [
-                "O perito judicial deve acatar as conclusões dos assistentes técnicos para que seu laudo seja validado.",
-                "O assistente técnico pode apresentar parecer divergente do laudo pericial, desde que fundamentado.",
-                "O assistente técnico, por ser indicado por uma das partes, não precisa fundamentar suas conclusões.",
-                "Somente o perito judicial pode se manifestar tecnicamente, não sendo admitidos assistentes nessas ações."
+                "Cabe ao perito judicial coordenar e supervisionar o trabalho dos assistentes técnicos indicados pelas partes.",
+                "O assistente técnico indicado por uma das partes pode apresentar parecer com conclusões divergentes das do laudo pericial.",
+                "O assistente técnico está sujeito às mesmas regras de impedimento e suspeição exigidas do perito judicial.",
+                "O parecer do assistente técnico substitui o laudo do perito quando aponta falhas na metodologia empregada."
             ],
             // Resposta correta: 1
             hash: "MQ=="
         },
         {
-            title: "Questão 3 – Inteligência Artificial Aplicada ao Meio Ambiente",
+            title: "Questão 3",
             supportText: "A Inteligência Artificial do imaginário popular — uma máquina consciente, com vontade própria — não corresponde à que existe hoje. Os sistemas em operação executam tarefas específicas para as quais foram construídos: classificar imagens, prever valores, organizar documentos. São competentes na tarefa, e não inteligentes no sentido humano.",
             questionText: "Sobre o que é, na prática, a Inteligência Artificial aplicada ao meio ambiente, assinale a alternativa correta:",
             options: [
-                "É uma tecnologia ainda experimental, sem aplicação real no setor ambiental brasileiro de hoje.",
-                "São sistemas conscientes, capazes de raciocinar sobre qualquer assunto como faria um ser humano.",
-                "É um conjunto de métodos que executam tarefas específicas, sem consciência ou compreensão do mundo.",
-                "São programas que apenas seguem regras fixas, escritas manualmente por equipes de especialistas."
+                "A IA aplicada ao meio ambiente consiste basicamente em programas que geram textos e imagens a partir de comandos escritos.",
+                "São máquinas dotadas de consciência e de vontade própria, capazes de definir sozinhas os objetivos ambientais a perseguir.",
+                "São sistemas que aprendem padrões a partir de dados para executar tarefas ambientais específicas, como identificar desmatamento ou prever a qualidade do ar.",
+                "São programas construídos a partir de regras fixas, escritas manualmente por especialistas, que não envolvem aprendizado com dados."
             ],
             // Resposta correta: 2
             hash: "Mg=="
         },
         {
-            title: "Questão 4 – Gestão e Remediação de Áreas Contaminadas",
+            title: "Questão 4",
             supportText: "A Resolução CONAMA nº 420/2009 estabelece os valores orientadores para solo e água subterrânea: o Valor de Referência de Qualidade (VRQ), o Valor de Prevenção (VP) e o Valor de Investigação (VI).",
             questionText: "Sobre esses valores orientadores, assinale a alternativa correta:",
             options: [
                 "O VRQ corresponde ao limite máximo de emissão de poluentes admitido no licenciamento ambiental.",
                 "A superação do Valor de Investigação exige investigação detalhada e avaliação de risco na área.",
-                "Os valores são idênticos em todo o país, pois independem das características naturais do solo.",
-                "A superação do Valor de Prevenção classifica a área como contaminada e exige remediação imediata."
+                "O VRQ é fixado em valor único e nacional, aplicável a qualquer tipo de solo do país.",
+                "A superação do Valor de Prevenção classifica a área como contaminada e determina sua remediação."
             ],
             // Resposta correta: 1
             hash: "MQ=="
         },
         {
-            title: "Questão 5 – Inteligência de Dados Ambientais",
+            title: "Questão 5",
             supportText: "A análise de dados ambientais trabalha com grandes volumes de informação vinda de sensores, estações de monitoramento e imagens de satélite. Bibliotecas de código aberto em Python, como Pandas, GeoPandas e Rasterio, são hoje o padrão para organizar, cruzar e visualizar esses dados.",
             questionText: "Sobre o uso dessas ferramentas na análise de dados ambientais, é correto afirmar:",
             options: [
@@ -66,12 +66,12 @@ document.addEventListener('DOMContentLoaded', () => {
             hash: "Mw=="
         },
         {
-            title: "Questão 6 – Geoprocessamento, Georreferenciamento e Sensoriamento Remoto",
+            title: "Questão 6",
             supportText: "O sensoriamento remoto capta informações da superfície terrestre a distância, por satélites ou aeronaves. Sobre as imagens obtidas aplicam-se técnicas como índices de vegetação, classificação de alvos e comparação de cenas de datas diferentes, cada uma respondendo a um tipo de pergunta.",
             questionText: "Considerando essas técnicas, assinale a alternativa correta:",
             options: [
                 "O índice NDVI é usado principalmente para delimitar áreas urbanas e superfícies pavimentadas.",
-                "A classificação de imagens só pode ser feita com dados de radar, e não com imagens ópticas.",
+                "Para acompanhar a variação da cobertura entre dois anos, classifica-se uma única imagem da área.",
                 "A comparação de imagens de datas diferentes permite identificar mudanças na cobertura do solo.",
                 "Imagens de satélite não servem para monitorar desmatamento, apenas para produzir mapas-base."
             ],
@@ -79,9 +79,9 @@ document.addEventListener('DOMContentLoaded', () => {
             hash: "Mg=="
         },
         {
-            title: "Questão 7 – Auditoria, Licenciamento e Perícia Ambiental",
-            supportText: "O licenciamento ambiental brasileiro organiza-se em três etapas sucessivas. A Licença Prévia aprova a localização e a concepção do empreendimento ainda na fase de planejamento; a Licença de Instalação autoriza o início das obras; e a Licença de Operação permite o funcionamento, depois de verificado o cumprimento das exigências anteriores.",
-            questionText: "Com base nessas etapas, assinale a alternativa correta:",
+            title: "Questão 7",
+            supportText: "O licenciamento ambiental brasileiro organiza-se em três etapas sucessivas: Licença Prévia (LP), Licença de Instalação (LI) e Licença de Operação (LO), concedidas em momentos diferentes da vida do empreendimento, do planejamento ao funcionamento.",
+            questionText: "Assinale a alternativa que associa corretamente a licença à sua finalidade:",
             options: [
                 "As três licenças são concedidas de uma só vez, ao final do processo de análise.",
                 "A Licença Prévia autoriza o funcionamento do empreendimento em caráter provisório.",
@@ -92,63 +92,63 @@ document.addEventListener('DOMContentLoaded', () => {
             hash: "Mw=="
         },
         {
-            title: "Questão 8 – Inteligência Artificial Aplicada ao Meio Ambiente",
+            title: "Questão 8",
             supportText: "Os sistemas que aprendem com dados fazem isso de três formas. No aprendizado supervisionado, cada exemplo vem acompanhado da resposta certa. No não supervisionado, não há resposta e o sistema busca agrupamentos e padrões por conta própria. No aprendizado por reforço, um agente aprende por tentativa, erro e recompensa.",
             questionText: "Considerando aplicações ambientais desses regimes, assinale a alternativa correta:",
             options: [
                 "Classificar o uso do solo a partir de pontos de campo com classes conhecidas é aprendizado supervisionado.",
                 "Agrupar poços de monitoramento por semelhança química, sem definir os grupos antes, é supervisionado.",
                 "Prever a concentração de um poluente a partir da série histórica é aprendizado por reforço.",
-                "O aprendizado não supervisionado exige que cada exemplo venha com a resposta certa anotada."
+                "Definir a operação de uma estação de tratamento por tentativa e recompensa, ajustando a cada resultado, é um aprendizado não supervisionado."
             ],
             // Resposta correta: 0
             hash: "MA=="
         },
         {
-            title: "Questão 9 – Inteligência de Dados Ambientais",
+            title: "Questão 9",
             supportText: "Em campanhas de monitoramento, parte dos resultados laboratoriais volta reportada como “menor que” o limite de quantificação do método analítico. São os chamados dados censurados, e o tratamento dado a eles influencia médias, tendências e comparações com padrões legais.",
             questionText: "Sobre o tratamento desses resultados, assinale a alternativa correta:",
             options: [
-                "Resultados abaixo do limite de quantificação devem ser descartados, por não trazerem informação.",
-                "Substituir todos os valores censurados por zero é o procedimento estatisticamente recomendado.",
-                "O valor está entre zero e o limite de quantificação, e substituições arbitrárias geram viés.",
-                "O tratamento adotado é indiferente, desde que o número de amostras da campanha seja elevado."
+                "Valores reportados como \"menor que\" devem ser excluídos do conjunto antes de calcular médias e tendências.",
+                "O procedimento adequado é substituir todo valor censurado por zero, por ser o limite inferior possível.",
+                "O valor real está entre zero e o limite de quantificação, e substituições arbitrárias introduzem viés nos resultados.",
+                "Substituir cada valor censurado pelo próprio limite de quantificação elimina o viés da análise."
             ],
             // Resposta correta: 2
             hash: "Mg=="
         },
         {
-            title: "Questão 10 – Gestão e Remediação de Áreas Contaminadas",
-            supportText: "O gerenciamento de áreas contaminadas segue uma sequência definida: avaliação preliminar (levantamento do histórico e dos indícios), investigação confirmatória (amostragem dirigida às áreas suspeitas), investigação detalhada, avaliação de risco e, por fim, a intervenção.",
-            questionText: "Sobre essa sequência de etapas, assinale a alternativa correta:",
+            title: "Questão 10",
+            supportText: "O gerenciamento de áreas contaminadas segue uma sequência definida de etapas: avaliação preliminar, investigação confirmatória, investigação detalhada, avaliação de risco e, por fim, a intervenção. Cada etapa tem um objetivo próprio e prepara a seguinte.",
+            questionText: "Assinale a alternativa que associa corretamente a etapa ao seu objetivo:",
             options: [
-                "A investigação confirmatória busca comprovar ou afastar a contaminação por meio de amostragem.",
-                "A avaliação preliminar exige a coleta e a análise química de amostras em toda a extensão da área.",
-                "A investigação detalhada antecede a confirmatória e define onde as amostras serão coletadas.",
-                "A avaliação de risco é a primeira etapa, pois orienta todo o trabalho de campo subsequente."
+                "A investigação confirmatória coleta amostras dirigidas às áreas suspeitas para comprovar ou afastar a contaminação.",
+                "A avaliação preliminar baseia-se no levantamento do histórico e de indícios da área, sem coleta de amostras.",
+                "A investigação detalhada é a etapa inicial e define onde ficam localizadas as áreas suspeitas.",
+                "A avaliação de risco antecede a investigação confirmatória e orienta onde as amostras serão coletadas."
             ],
             // Resposta correta: 0
             hash: "MA=="
         },
         {
-            title: "Questão 11 – Geoprocessamento, Georreferenciamento e Sensoriamento Remoto",
+            title: "Questão 11",
             supportText: "O Sistema Geodésico Brasileiro define os referenciais sobre os quais as coordenadas do país são calculadas. Bases cartográficas produzidas em épocas distintas podem estar em referenciais diferentes, como o antigo SAD69 e o atual SIRGAS2000.",
             questionText: "Sobre esses sistemas de referência, marque a alternativa correta:",
             options: [
-                "A conversão entre SAD69 e SIRGAS2000 se faz somando um valor fixo, igual para todo o território.",
+                "A conversão de coordenadas entre SAD69 e SIRGAS2000 é dispensável quando ambas as bases cobrem a mesma região.",
                 "Ignorar a diferença entre os referenciais pode gerar deslocamentos de dezenas de metros no dado.",
-                "Por serem ambos consolidados, coordenadas em SAD69 e em SIRGAS2000 podem ser usadas juntas.",
+                "A transformação de SAD69 para SIRGAS2000 aplica um deslocamento constante, idêntico em qualquer ponto do país.",
                 "O SIRGAS2000 é um referencial local, ao contrário do WGS84, o que impede a conversão entre eles."
             ],
             // Resposta correta: 1
             hash: "MQ=="
         },
         {
-            title: "Questão 12 – Auditoria, Licenciamento e Perícia Ambiental",
+            title: "Questão 12",
             supportText: "Nos estudos ambientais, a avaliação de impactos organiza os efeitos previstos de um empreendimento segundo critérios como magnitude, duração, reversibilidade e a interação entre eles. É a base para definir as medidas de mitigação e de compensação exigidas no licenciamento.",
             questionText: "Sobre a avaliação de impactos ambientais, assinale a alternativa correta:",
             options: [
-                "Os impactos positivos devem ser desconsiderados, para que a avaliação seja mais conservadora.",
+                "A avaliação de impactos considera apenas os efeitos diretos do empreendimento, pois os indiretos são de difícil previsão.",
                 "A análise deve se restringir à fase de instalação, por ser a etapa de maior magnitude do projeto.",
                 "Apenas critérios qualitativos devem ser usados, pois quantificar impactos é sempre impreciso.",
                 "Os impactos devem ser analisados também em sua interação, para não mascarar efeitos cumulativos."
@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let currentQuestionIndex = 0;
     const userAnswers = new Array(questions.length).fill(null);
-    
+
     // Timer: 35 minutos
     let timeRemaining = 35 * 60;
     let timerInterval;
@@ -172,19 +172,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnPrev = document.getElementById('btn-prev');
     const btnNext = document.getElementById('btn-next');
     const timeLeftSpan = document.getElementById('time-left');
-    
+
     totalNumSpan.textContent = questions.length;
 
     function renderQuestion(index) {
         const q = questions[index];
         currentNumSpan.textContent = index + 1;
-        
+
         function updateProgressBar() {
             const answeredCount = userAnswers.filter(answer => answer !== null).length;
             const progressPercentage = (answeredCount / questions.length) * 100;
             progressBar.style.width = `${progressPercentage}%`;
         }
-        
+
         // Atualiza barra de progresso
         updateProgressBar();
 
@@ -213,7 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Atualiza estado dos botões
         btnPrev.disabled = index === 0;
-        
+
         if (index === questions.length - 1) {
             btnNext.textContent = 'Finalizar Prova';
             btnNext.classList.add('btn-finish');
@@ -229,13 +229,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Atualiza seleção visual
                 document.querySelectorAll('.option-label').forEach(lbl => lbl.classList.remove('selected'));
                 e.target.closest('.option-label').classList.add('selected');
-                
+
                 // Salva resposta
                 userAnswers[index] = parseInt(e.target.value);
-                
+
                 // Atualiza progresso da barra verde
                 updateProgressBar();
-                
+
                 // Auto-avança após pequeno delay
                 setTimeout(() => {
                     if (currentQuestionIndex < questions.length - 1) {
@@ -251,13 +251,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function calculateScoreAndRedirect() {
         clearInterval(timerInterval);
-        
+
         // Mostra loading
         const btnNavSection = document.querySelector('.navigation-section');
         btnNavSection.innerHTML = '<div class="spinner"></div><p>Calculando sua nota...</p>';
-        
+
         let acertos = 0;
-        
+
         questions.forEach((q, index) => {
             const userAnswer = userAnswers[index];
             if (userAnswer !== null) {
@@ -272,7 +272,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Lógica de Desconto
         let desconto = 30;
         let nota = 0.0;
-        
+
         if (acertos >= 10) {
             desconto = 70; // 10 a 12 acertos
         } else if (acertos >= 8) {
@@ -324,7 +324,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbxYq0BAjUQClV1NM9xrdrdJxvgHuW8ZesafyOx3ZLSzoRVVixuTVQsyiI_3GqAwwd_P/exec';
-        
+
         const startTime = Date.now();
         const executeRedirect = () => {
             const elapsed = Date.now() - startTime;
@@ -372,10 +372,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const modal = document.getElementById('custom-confirm-modal');
             if (modal) {
                 modal.style.display = 'flex';
-                
+
                 const btnConfirm = document.getElementById('btn-confirm-modal');
                 const btnCancel = document.getElementById('btn-cancel-modal');
-                
+
                 btnConfirm.onclick = () => {
                     const modalContent = modal.querySelector('.custom-modal');
                     if (modalContent) {
@@ -387,16 +387,16 @@ document.addEventListener('DOMContentLoaded', () => {
                                 </div>
                             </div>
                         `;
-                        
+
                         setTimeout(() => {
                             const bar = document.getElementById('calc-progress-bar');
                             if (bar) bar.style.width = '100%';
                         }, 50);
                     }
-                    
+
                     calculateScoreAndRedirect();
                 };
-                
+
                 btnCancel.onclick = () => {
                     modal.style.display = 'none';
                 };
@@ -419,15 +419,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // Timer logic
     function startTimer() {
         timeLeftSpan.textContent = formatTime(timeRemaining);
-        
+
         timerInterval = setInterval(() => {
             timeRemaining--;
             timeLeftSpan.textContent = formatTime(timeRemaining);
-            
+
             if (timeRemaining <= 300) { // 5 minutos restantes
                 timeLeftSpan.classList.add('time-warning');
             }
-            
+
             if (timeRemaining <= 0) {
                 clearInterval(timerInterval);
                 document.getElementById('timeOutModal').style.display = 'block';
@@ -442,7 +442,7 @@ document.addEventListener('DOMContentLoaded', () => {
         btnStartQuiz.addEventListener('click', () => {
             document.getElementById('instructions-section').style.display = 'none';
             document.getElementById('quiz-content').style.display = 'block';
-            
+
             renderQuestion(0);
             startTimer();
         });
