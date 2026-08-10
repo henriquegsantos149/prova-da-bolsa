@@ -27,11 +27,11 @@ export default function handler(req, res) {
             '30': 'https://pay.voompcreators.com.br/13469/offer/qitI39',
         },
         'iama': {
-            '70': 'https://pay.voompcreators.com.br/14929/offer/lDBNEe',
+            '70': 'https://pay.voompcreators.com.br/14929/offer/ct2cqQ',
             '65': 'https://pay.voompcreators.com.br/14929/offer/FkEKzB',
             '60': 'https://pay.voompcreators.com.br/14929/offer/599eTy',
             '55': 'https://pay.voompcreators.com.br/14929/offer/lPNxjQ',
-            '50': 'https://pay.voompcreators.com.br/14929/offer/QFuLKb',
+            '50': 'https://pay.voompcreators.com.br/14929/offer/T2MU9S',
             '30': 'https://pay.voompcreators.com.br/14929/offer/p5Eu92',
         },
         'ida': {
