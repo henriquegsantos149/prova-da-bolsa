@@ -1429,3 +1429,225 @@ h6 {
         padding: 5px 10px !important;
     }
 }
+
+
+/* =========================================
+   GABARITO DA PROVA
+   ========================================= */
+.btn-gabarito {
+    display: inline-block;
+    padding: 14px 34px;
+    font-size: 1rem;
+    border-radius: 50px;
+    background: transparent;
+    border: 2px solid #4ade80;
+    color: #4ade80;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.btn-gabarito:hover {
+    background: rgba(74, 222, 128, 0.12);
+    box-shadow: 0 4px 15px rgba(34, 197, 94, 0.2);
+    transform: translateY(-2px);
+}
+
+.gabarito-section {
+    padding: 70px 20px 20px 20px;
+}
+
+.gabarito-section .gabarito-heading {
+    color: #ffffff;
+    margin-bottom: 15px;
+}
+
+.gabarito-intro {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 45px auto;
+    color: var(--light-gray);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.gabarito-legend-correct {
+    color: #4ade80;
+    font-weight: 700;
+}
+
+.gabarito-legend-wrong {
+    color: #ef4444;
+    font-weight: 700;
+}
+
+.gabarito-list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.gabarito-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 30px;
+}
+
+.gabarito-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.gabarito-card-title {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    color: #ffffff;
+}
+
+.gabarito-status {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 6px 16px;
+    border-radius: 50px;
+    white-space: nowrap;
+}
+
+.gabarito-status-correct {
+    color: #4ade80;
+    background: rgba(34, 197, 94, 0.12);
+    border: 1px solid rgba(74, 222, 128, 0.5);
+}
+
+.gabarito-status-wrong {
+    color: #ef4444;
+    background: rgba(239, 68, 68, 0.12);
+    border: 1px solid rgba(239, 68, 68, 0.5);
+}
+
+.gabarito-support-text {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #cbd5e1;
+    margin-bottom: 15px;
+}
+
+.gabarito-question-text {
+    font-weight: 600;
+    font-size: 1.05rem;
+    line-height: 1.5;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.gabarito-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.gabarito-option {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 4px 12px;
+    padding: 16px 18px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: var(--light-gray);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.gabarito-option-correct {
+    background: rgba(34, 197, 94, 0.12);
+    border-color: #22c55e;
+    color: #dcfce7;
+}
+
+.gabarito-option-wrong {
+    background: rgba(239, 68, 68, 0.12);
+    border-color: #ef4444;
+    color: #fee2e2;
+}
+
+.gabarito-option-letter {
+    font-weight: 700;
+    min-width: 22px;
+}
+
+.gabarito-option-correct .gabarito-option-letter {
+    color: #4ade80;
+}
+
+.gabarito-option-wrong .gabarito-option-letter {
+    color: #ef4444;
+}
+
+.gabarito-option-text {
+    flex: 1;
+    min-width: 0;
+}
+
+.gabarito-tag {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 4px 10px;
+    border-radius: 50px;
+    align-self: center;
+    white-space: nowrap;
+}
+
+.gabarito-tag-correct {
+    color: #052e16;
+    background: #4ade80;
+}
+
+.gabarito-tag-wrong {
+    color: #ffffff;
+    background: #ef4444;
+}
+
+@media (max-width: 768px) {
+    .gabarito-section {
+        padding: 50px 15px 10px 15px;
+    }
+
+    .gabarito-section .gabarito-heading {
+        font-size: 1.8rem;
+    }
+
+    .gabarito-intro {
+        font-size: 0.9rem;
+        margin-bottom: 30px;
+    }
+
+    .gabarito-card {
+        padding: 20px 18px;
+    }
+
+    .gabarito-card-title {
+        font-size: 1.5rem;
+    }
+
+    .gabarito-option {
+        padding: 14px;
+        font-size: 0.9rem;
+    }
+
+    .btn-gabarito {
+        padding: 12px 24px;
+        font-size: 0.95rem;
+    }
+}

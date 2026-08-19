@@ -257,6 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
         btnNavSection.innerHTML = '<div class="spinner"></div><p>Calculando sua nota...</p>';
 
         let acertos = 0;
+        const gabarito = [];
 
         questions.forEach((q, index) => {
             const userAnswer = userAnswers[index];
@@ -267,7 +268,23 @@ document.addEventListener('DOMContentLoaded', () => {
                     acertos++;
                 }
             }
+
+            // Guarda os dados da questão para a exibição do gabarito na tela de resultado
+            gabarito.push({
+                title: q.title,
+                supportText: q.supportText,
+                questionText: q.questionText,
+                options: q.options,
+                correct: parseInt(atob(q.hash), 10),
+                userAnswer: userAnswer
+            });
         });
+
+        try {
+            localStorage.setItem('ambientalpro_prova_gabarito', JSON.stringify(gabarito));
+        } catch (err) {
+            console.error("Erro ao salvar o gabarito:", err);
+        }
 
         // Lógica de Desconto
         let desconto = 30;

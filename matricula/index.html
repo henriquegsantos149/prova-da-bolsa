@@ -79,6 +79,10 @@
                             id="cta-desconto">--%</span>!
                     </a>
                 </div>
+
+                <div id="gabarito-cta" style="text-align: center; margin-bottom: 30px; display: none;">
+                    <button type="button" id="btn-conferir-gabarito" class="btn btn-gabarito">Conferir gabarito</button>
+                </div>
             </div>
         </section>
 
@@ -714,6 +718,18 @@
                     </svg>
                     Falar com a Equipe no WhatsApp
                 </a>
+            </div>
+        </section>
+
+        <!-- Gabarito da Prova -->
+        <section id="gabarito-section" class="gabarito-section" style="display: none;">
+            <div class="container">
+                <h2 class="section-title gabarito-heading">Gabarito da Prova</h2>
+                <p class="gabarito-intro">Confira abaixo todas as questões da prova. Em <span
+                        class="gabarito-legend-correct">verde</span> está a alternativa correta e em <span
+                        class="gabarito-legend-wrong">vermelho</span> a alternativa que você marcou quando a resposta
+                    não estava certa.</p>
+                <div id="gabarito-list" class="gabarito-list"></div>
             </div>
         </section>
 

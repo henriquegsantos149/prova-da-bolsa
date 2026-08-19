@@ -177,6 +177,91 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Gabarito da prova (exibido ao clicar em "Conferir gabarito")
+    const gabaritoSection = document.getElementById('gabarito-section');
+    const gabaritoList = document.getElementById('gabarito-list');
+    const gabaritoCta = document.getElementById('gabarito-cta');
+    const btnGabarito = document.getElementById('btn-conferir-gabarito');
+
+    let gabarito = null;
+    try {
+        gabarito = JSON.parse(localStorage.getItem('ambientalpro_prova_gabarito'));
+    } catch (err) {
+        gabarito = null;
+    }
+
+    if (gabaritoSection && gabaritoList && Array.isArray(gabarito) && gabarito.length > 0) {
+        const escapeHtml = (text) => String(text == null ? '' : text)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;');
+
+        gabaritoList.innerHTML = gabarito.map((item, index) => {
+            const options = Array.isArray(item.options) ? item.options : [];
+            const userAnswer = (item.userAnswer === null || item.userAnswer === undefined) ? null : Number(item.userAnswer);
+            const correct = Number(item.correct);
+            const acertou = userAnswer !== null && userAnswer === correct;
+
+            let statusClass = 'gabarito-status-wrong';
+            let statusText = 'Você errou';
+            if (acertou) {
+                statusClass = 'gabarito-status-correct';
+                statusText = 'Você acertou';
+            } else if (userAnswer === null) {
+                statusText = 'Não respondida';
+            }
+
+            const optionsHtml = options.map((opt, i) => {
+                const letter = String.fromCharCode(65 + i);
+                let optionClass = 'gabarito-option';
+                let tag = '';
+
+                if (i === correct) {
+                    optionClass += ' gabarito-option-correct';
+                    tag = '<span class="gabarito-tag gabarito-tag-correct">Resposta correta</span>';
+                } else if (i === userAnswer) {
+                    optionClass += ' gabarito-option-wrong';
+                    tag = '<span class="gabarito-tag gabarito-tag-wrong">Sua resposta</span>';
+                }
+
+                return `
+                    <div class="${optionClass}">
+                        <span class="gabarito-option-letter">${letter})</span>
+                        <span class="gabarito-option-text">${escapeHtml(opt)}</span>
+                        ${tag}
+                    </div>
+                `;
+            }).join('');
+
+            const supportHtml = item.supportText
+                ? `<p class="gabarito-support-text">${escapeHtml(item.supportText)}</p>`
+                : '';
+
+            return `
+                <div class="gabarito-card">
+                    <div class="gabarito-card-header">
+                        <span class="gabarito-card-title">${escapeHtml(item.title || `Questão ${index + 1}`)}</span>
+                        <span class="gabarito-status ${statusClass}">${statusText}</span>
+                    </div>
+                    ${supportHtml}
+                    <p class="gabarito-question-text">${escapeHtml(item.questionText)}</p>
+                    <div class="gabarito-options">${optionsHtml}</div>
+                </div>
+            `;
+        }).join('');
+
+        gabaritoSection.style.display = 'block';
+
+        if (gabaritoCta) gabaritoCta.style.display = 'block';
+
+        if (btnGabarito) {
+            btnGabarito.addEventListener('click', () => {
+                gabaritoSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        }
+    }
+
     // Lógica do cronômetro (até 23:59:59 do dia atual)
     const timerElement = document.getElementById('countdown-timer');
     if (timerElement) {
