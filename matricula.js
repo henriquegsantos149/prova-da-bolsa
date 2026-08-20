@@ -20,9 +20,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const numAcertos = parseInt(acertos, 10);
     const subtitleEl = document.querySelector('.results-hero .container > p:first-of-type');
     
-    if (numAcertos < 4) {
-        desconto = '30';
-    }
+    // if (numAcertos < 4) {
+    //     desconto = '30';
+    // }
 
     const descontoNum = parseInt(desconto, 10) || 0;
 
@@ -30,13 +30,21 @@ document.addEventListener('DOMContentLoaded', () => {
         if (subtitleEl) {
             subtitleEl.innerHTML = 'Excelente resultado! Isso mostra seu compromisso com o crescimento profissional.<br>Nossa pós-graduação foi feita para quem deseja se destacar no mercado. Sua participação garantiu um desconto exclusivo de';
         }
-    } else {
+    } else if (descontoNum > 0) {
         const titleH1 = document.querySelector('.results-title');
         if (titleH1) {
             titleH1.innerHTML = `Olá, <span id="user-name" class="gradient-highlight">${nome.split(' ')[0]}</span>!`;
         }
         if (subtitleEl) {
             subtitleEl.innerHTML = 'Não se desanime com o resultado! Aproveite esta oportunidade para ampliar seus conhecimentos e construir uma carreira ainda mais sólida. O aprendizado contínuo faz toda a diferença na vida profissional. Sua participação garantiu';
+        }
+    } else {
+        const titleH1 = document.querySelector('.results-title');
+        if (titleH1) {
+            titleH1.innerHTML = `Olá, <span id="user-name" class="gradient-highlight">${nome.split(' ')[0]}</span>!`;
+        }
+        if (subtitleEl) {
+            subtitleEl.innerHTML = 'Não se desanime com o resultado! Infelizmente, a sua nota não foi suficiente para garantir uma bolsa de estudos neste momento.<br><br>Mas não desista! Entre em contato com a nossa equipe comercial para avaliarmos a sua situação e encontrarmos a melhor forma de você iniciar a sua pós-graduação.';
         }
     }
 
@@ -47,10 +55,34 @@ document.addEventListener('DOMContentLoaded', () => {
     if (notaEl) notaEl.textContent = Math.round(parseFloat(nota));
 
     const hugeDescontoEl = document.getElementById('huge-score-desconto');
-    if (hugeDescontoEl) hugeDescontoEl.textContent = `${desconto}%`;
+    const urgencyTimerEl = document.querySelector('.urgency-timer');
+    if (hugeDescontoEl) {
+        const deBolsaTextEl = hugeDescontoEl.nextElementSibling;
+        if (descontoNum === 0) {
+            hugeDescontoEl.style.display = 'none';
+            if (deBolsaTextEl && deBolsaTextEl.textContent.includes('DE BOLSA')) deBolsaTextEl.style.display = 'none';
+            if (urgencyTimerEl) urgencyTimerEl.style.display = 'none';
+        } else {
+            hugeDescontoEl.textContent = `${desconto}%`;
+            hugeDescontoEl.style.display = 'block';
+            if (deBolsaTextEl && deBolsaTextEl.textContent.includes('DE BOLSA')) deBolsaTextEl.style.display = 'block';
+            if (urgencyTimerEl) urgencyTimerEl.style.display = 'flex';
+        }
+    }
 
     const ctaDescontoEl = document.getElementById('cta-desconto');
-    if (ctaDescontoEl) ctaDescontoEl.textContent = `${desconto}%`;
+    if (ctaDescontoEl) {
+        if (descontoNum === 0) {
+            const btnCta = ctaDescontoEl.closest('a');
+            if (btnCta) {
+                btnCta.innerHTML = 'Fale com nosso comercial para conhecer as condições!';
+                btnCta.href = 'https://api.whatsapp.com/send/?phone=5521982639824&text=Ol%C3%A1!%20Fiz%20a%20Prova%20da%20Bolsa%20e%20gostaria%20de%20falar%20com%20um%20consultor%20sobre%20as%20p%C3%B3s-gradua%C3%A7%C3%B5es.&type=phone_number&app_absent=0';
+                btnCta.target = '_blank';
+            }
+        } else {
+            ctaDescontoEl.textContent = `${desconto}%`;
+        }
+    }
 
     // 2. Calcular preços dinâmicos
     const descMult = 1 - (parseFloat(desconto) / 100);
@@ -72,7 +104,13 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         const btn = priceGgsr.nextElementSibling;
         if (btn && btn.tagName === 'A') {
-            btn.href = `/api/checkout?curso=ggsr&desconto=${desconto}`;
+            if (descontoNum === 0) {
+                btn.href = 'https://api.whatsapp.com/send/?phone=5521982639824&text=Ol%C3%A1!%20Fiz%20a%20Prova%20da%20Bolsa%20e%20gostaria%20de%20falar%20com%20um%20consultor%20sobre%20a%20p%C3%B3s-gradua%C3%A7%C3%A3o%20GGSR.&type=phone_number&app_absent=0';
+                btn.textContent = 'FALAR COM O COMERCIAL';
+                btn.target = '_blank';
+            } else {
+                btn.href = `/api/checkout?curso=ggsr&desconto=${desconto}`;
+            }
         }
     }
 
@@ -89,7 +127,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const btn = priceEl.nextElementSibling;
         if (btn && btn.tagName === 'A') {
             const curso = priceEl.id.split('-')[1]; // ida, iama, alpa
-            btn.href = `/api/checkout?curso=${curso}&desconto=${desconto}`;
+            if (descontoNum === 0) {
+                btn.href = `https://api.whatsapp.com/send/?phone=5521982639824&text=Ol%C3%A1!%20Fiz%20a%20Prova%20da%20Bolsa%20e%20gostaria%20de%20falar%20com%20um%20consultor%20sobre%20a%20p%C3%B3s-gradua%C3%A7%C3%A3o%20${curso.toUpperCase()}.&type=phone_number&app_absent=0`;
+                btn.textContent = 'FALAR COM O COMERCIAL';
+                btn.target = '_blank';
+            } else {
+                btn.href = `/api/checkout?curso=${curso}&desconto=${desconto}`;
+            }
         }
     });
 
@@ -105,7 +149,13 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         const btn = priceEl.nextElementSibling;
         if (btn && btn.tagName === 'A') {
-            btn.href = `/api/checkout?curso=grac&desconto=${desconto}`;
+            if (descontoNum === 0) {
+                btn.href = 'https://api.whatsapp.com/send/?phone=5521982639824&text=Ol%C3%A1!%20Fiz%20a%20Prova%20da%20Bolsa%20e%20gostaria%20de%20falar%20com%20um%20consultor%20sobre%20a%20p%C3%B3s-gradua%C3%A7%C3%A3o%20GRAC.&type=phone_number&app_absent=0';
+                btn.textContent = 'FALAR COM O COMERCIAL';
+                btn.target = '_blank';
+            } else {
+                btn.href = `/api/checkout?curso=grac&desconto=${desconto}`;
+            }
         }
     });
 

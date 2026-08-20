@@ -743,22 +743,25 @@
         <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
         <script>
             window.addEventListener('load', () => {
-                const defaults = {
-                    origin: { y: 1 },
-                    colors: ['#6FB03A', '#25D366', '#ffffff'],
-                    zIndex: 10000
-                };
+                const desconto = parseInt(localStorage.getItem('ambientalpro_prova_desconto') || '0', 10);
+                if (desconto > 0) {
+                    const defaults = {
+                        origin: { y: 1 },
+                        colors: ['#6FB03A', '#25D366', '#ffffff'],
+                        zIndex: 10000
+                    };
 
-                function fire(particleRatio, opts) {
-                    confetti(Object.assign({}, defaults, opts, {
-                        particleCount: Math.floor(600 * particleRatio)
-                    }));
+                    function fire(particleRatio, opts) {
+                        confetti(Object.assign({}, defaults, opts, {
+                            particleCount: Math.floor(600 * particleRatio)
+                        }));
+                    }
+
+                    // Tiro da esquerda
+                    fire(0.7, { spread: 80, startVelocity: 70, angle: 60, origin: { x: 0, y: 1 } });
+                    // Tiro da direita
+                    fire(0.7, { spread: 80, startVelocity: 70, angle: 120, origin: { x: 1, y: 1 } });
                 }
-
-                // Tiro da esquerda
-                fire(0.7, { spread: 80, startVelocity: 70, angle: 60, origin: { x: 0, y: 1 } });
-                // Tiro da direita
-                fire(0.7, { spread: 80, startVelocity: 70, angle: 120, origin: { x: 1, y: 1 } });
             });
         </script>
 
