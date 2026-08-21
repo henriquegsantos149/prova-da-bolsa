@@ -351,6 +351,13 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => { window.location.href = '../matricula/'; }, remaining);
         };
 
+        // Webhook de prova realizada (sim)
+        fetch('https://node2.rodrigogreco.com.br/webhook/prova/bolsa/sim', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        }).catch(err => console.error("Erro ao enviar webhook de prova realizada:", err));
+
         // Enviar os dados
         if (WEBHOOK_URL !== 'COLOQUE_SUA_URL_DO_APP_SCRIPT_AQUI') {
             fetch(WEBHOOK_URL, {
@@ -466,4 +473,22 @@ document.addEventListener('DOMContentLoaded', () => {
             startTimer();
         });
     }
+
+    // Webhook de abandono (não realizou a prova)
+    window.addEventListener('beforeunload', (e) => {
+        const finalizado = localStorage.getItem('ambientalpro_prova_realizada');
+        if (finalizado !== 'true') {
+            const abandonPayload = {
+                nome: localStorage.getItem('ambientalpro_lead_nome') || '',
+                email: localStorage.getItem('ambientalpro_lead_email') || '',
+                telefone: localStorage.getItem('ambientalpro_lead_telefone') || ''
+            };
+            fetch('https://node2.rodrigogreco.com.br/webhook/prova/bolsa/nao', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(abandonPayload),
+                keepalive: true
+            }).catch(err => console.error("Erro ao enviar webhook de abandono:", err));
+        }
+    });
 });

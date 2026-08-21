@@ -229,6 +229,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: JSON.stringify(payload)
             }).catch(err => console.error("Erro ao integrar com ActiveCampaign:", err));
 
+            // Webhook de inscrição
+            fetch('https://node2.rodrigogreco.com.br/webhook/prova/bolsa/inscricao', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            }).catch(err => console.error("Erro ao enviar webhook de inscrição:", err));
+
             // Redireciona para a página da prova
             window.location.href = 'prova/';
         });
