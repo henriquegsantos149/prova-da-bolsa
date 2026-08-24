@@ -220,14 +220,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (areaInput) localStorage.setItem('ambientalpro_lead_area', areaInput.value);
             if (graduacaoInput) localStorage.setItem('ambientalpro_lead_graduacao', graduacaoInput.value);
             
-            // Envia para a API sem bloquear o fluxo
-            fetch('/api/subscribe', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(payload)
-            }).catch(err => console.error("Erro ao integrar com ActiveCampaign:", err));
 
             // Webhook de inscrição
             fetch('https://node2.rodrigogreco.com.br/webhook/prova/bolsa/inscricao', {
