@@ -58,6 +58,16 @@ export default function handler(req, res) {
         return res.status(404).send('Desconto inválido ou link não configurado.');
     }
 
-    // Redirect the user securely to the checkout URL
-    return res.redirect(302, checkoutUrl);
+    // Redirect the user securely to the checkout URL preserving UTM parameters
+    try {
+        const finalUrl = new URL(checkoutUrl);
+        Object.entries(req.query).forEach(([k, v]) => {
+            if (k !== 'curso' && k !== 'desconto' && v) {
+                finalUrl.searchParams.set(k, v);
+            }
+        });
+        return res.redirect(302, finalUrl.toString());
+    } catch (e) {
+        return res.redirect(302, checkoutUrl);
+    }
 }

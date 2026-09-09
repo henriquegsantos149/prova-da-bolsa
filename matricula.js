@@ -92,6 +92,19 @@ document.addEventListener('DOMContentLoaded', () => {
         return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     };
 
+    // Função auxiliar para passar UTMs ao checkout
+    const getCheckoutUtms = () => {
+        const params = new URLSearchParams(window.location.search);
+        ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'].forEach(k => {
+            if (!params.has(k)) {
+                const val = localStorage.getItem('ambientalpro_' + k) || sessionStorage.getItem('ambientalpro_' + k);
+                if (val) params.set(k, val);
+            }
+        });
+        const str = params.toString();
+        return str ? '&' + str : '';
+    };
+
     // Atualizar Pós GGSR (R$ 7.970,00)
     const priceGgsr = document.getElementById('price-ggsr');
     if (priceGgsr) {
@@ -109,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 btn.textContent = 'FALAR COM O COMERCIAL';
                 btn.target = '_blank';
             } else {
-                btn.href = `/api/checkout?curso=ggsr&desconto=${desconto}`;
+                btn.href = `/api/checkout?curso=ggsr&desconto=${desconto}` + getCheckoutUtms();
             }
         }
     }
@@ -132,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 btn.textContent = 'FALAR COM O COMERCIAL';
                 btn.target = '_blank';
             } else {
-                btn.href = `/api/checkout?curso=${curso}&desconto=${desconto}`;
+                btn.href = `/api/checkout?curso=${curso}&desconto=${desconto}` + getCheckoutUtms();
             }
         }
     });
@@ -154,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 btn.textContent = 'FALAR COM O COMERCIAL';
                 btn.target = '_blank';
             } else {
-                btn.href = `/api/checkout?curso=grac&desconto=${desconto}`;
+                btn.href = `/api/checkout?curso=grac&desconto=${desconto}` + getCheckoutUtms();
             }
         }
     });

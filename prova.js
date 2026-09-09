@@ -1,4 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Persiste UTMs caso venham na URL
+    const urlParams = new URLSearchParams(window.location.search);
+    urlParams.forEach((val, key) => {
+        const k = key.toLowerCase();
+        if (['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'].includes(k)) {
+            try {
+                localStorage.setItem('ambientalpro_' + k, val);
+                sessionStorage.setItem('ambientalpro_' + k, val);
+            } catch (e) {}
+        }
+    });
     const questions = [
         {
             title: "Questão 1",
@@ -339,7 +350,12 @@ document.addEventListener('DOMContentLoaded', () => {
             graduacao: localStorage.getItem('ambientalpro_lead_graduacao') || '',
             acertos: acertos,
             nota: nota,
-            desconto: desconto
+            desconto: desconto,
+            utm_source: localStorage.getItem('ambientalpro_utm_source') || '',
+            utm_medium: localStorage.getItem('ambientalpro_utm_medium') || '',
+            utm_campaign: localStorage.getItem('ambientalpro_utm_campaign') || '',
+            utm_term: localStorage.getItem('ambientalpro_utm_term') || '',
+            utm_content: localStorage.getItem('ambientalpro_utm_content') || ''
         };
 
         const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbxYq0BAjUQClV1NM9xrdrdJxvgHuW8ZesafyOx3ZLSzoRVVixuTVQsyiI_3GqAwwd_P/exec';
@@ -348,7 +364,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const executeRedirect = () => {
             const elapsed = Date.now() - startTime;
             const remaining = Math.max(0, 1500 - elapsed);
-            setTimeout(() => { window.location.href = '../matricula/'; }, remaining);
+            setTimeout(() => {
+                const searchParams = new URLSearchParams(window.location.search);
+                ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'].forEach(k => {
+                    if (!searchParams.has(k)) {
+                        const val = localStorage.getItem('ambientalpro_' + k) || sessionStorage.getItem('ambientalpro_' + k);
+                        if (val) searchParams.set(k, val);
+                    }
+                });
+                const searchStr = searchParams.toString() ? '?' + searchParams.toString() : '';
+                window.location.href = '../matricula/' + searchStr;
+            }, remaining);
         };
 
         // Webhook de prova realizada (sim)

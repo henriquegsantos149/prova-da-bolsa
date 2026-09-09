@@ -14,8 +14,11 @@ export default async function handler(req, res) {
     try {
         const {
             nome,
+            name,
             email,
             telefone,
+            phone,
+            whatsapp,
             area,
             graduacao,
             utm_source,
@@ -25,32 +28,48 @@ export default async function handler(req, res) {
             utm_content
         } = req.body;
 
-        if (!email) {
+        const cleanEmail = (email || '').trim().toLowerCase();
+        if (!cleanEmail) {
             return res.status(400).json({ message: 'Email is required' });
         }
 
-        // Prepare field values array
-        const fieldValues = [
-            { field: "437", value: utm_source || "" },
-            { field: "438", value: utm_campaign || "" },
-            { field: "439", value: utm_medium || "" },
-            { field: "440", value: utm_term || "" },
-            { field: "441", value: utm_content || "" },
-            { field: "442", value: new Date().toISOString() }
-        ];
+        // Separa firstName e lastName
+        const fullName = (nome || name || '').trim();
+        const nameParts = fullName.split(/\s+/);
+        const firstName = nameParts[0] || '';
+        const lastName = nameParts.slice(1).join(' ');
 
-        if (graduacao) {
-            fieldValues.push({ field: "443", value: graduacao });
+        // Sanitiza telefone: remove caracteres especiais e DDI 55 se houver
+        const rawPhone = (telefone || phone || whatsapp || '').toString().trim();
+        let digitsOnly = rawPhone.replace(/\D/g, '');
+        let cleanPhone = digitsOnly;
+        if (digitsOnly.startsWith('55') && (digitsOnly.length === 12 || digitsOnly.length === 13)) {
+            cleanPhone = digitsOnly.substring(2);
         }
-        if (area) {
-            fieldValues.push({ field: "444", value: area });
-        }
+
+        // Helper para adicionar campos apenas se tiverem valor preenchido (não sobrescreve com vazio)
+        const addField = (fieldsArray, fieldId, value) => {
+            if (value !== undefined && value !== null && String(value).trim() !== '') {
+                fieldsArray.push({ field: String(fieldId), value: String(value).trim() });
+            }
+        };
+
+        const fieldValues = [];
+        addField(fieldValues, "437", utm_source);
+        addField(fieldValues, "438", utm_campaign);
+        addField(fieldValues, "439", utm_medium);
+        addField(fieldValues, "440", utm_term);
+        addField(fieldValues, "441", utm_content);
+        addField(fieldValues, "442", new Date().toISOString());
+        addField(fieldValues, "443", graduacao);
+        addField(fieldValues, "444", area);
 
         const syncPayload = {
             contact: {
-                email: email,
-                firstName: nome || "",
-                phone: telefone || "",
+                email: cleanEmail,
+                firstName: firstName,
+                lastName: lastName,
+                phone: cleanPhone,
                 fieldValues: fieldValues
             }
         };
@@ -97,7 +116,7 @@ export default async function handler(req, res) {
             if (!tagResponse.ok) {
                 const tagErrorData = await tagResponse.text();
                 console.error("ActiveCampaign Tag Error:", tagErrorData);
-                // Non-fatal error, but we log it
+                // Non-fatal error, mas logado
             }
         }
 

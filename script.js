@@ -181,57 +181,127 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Helper para pegar UTMs da URL
+    // Helper para capturar e persistir UTMs da URL e do storage
     function getUTMs() {
         const params = new URLSearchParams(window.location.search);
-        // Suporta tanto os utms padrão (minúsculos) quanto os com prefixo (maiúsculos) citados no exemplo
-        return {
-            utm_source: params.get('utm_source') || params.get('BOLSA_DE_ESTUDOS_UTM_SOURCE') || '',
-            utm_medium: params.get('utm_medium') || params.get('BOLSA_DE_ESTUDOS_UTM_MEDIUM') || '',
-            utm_campaign: params.get('utm_campaign') || params.get('BOLSA_DE_ESTUDOS_UTM_CAMPAIGN') || '',
-            utm_term: params.get('utm_term') || params.get('BOLSA_DE_ESTUDOS_UTM_TERM') || '',
-            utm_content: params.get('utm_content') || params.get('BOLSA_DE_ESTUDOS_UTM_CONTENT') || ''
+        const utms = {
+            utm_source: '',
+            utm_medium: '',
+            utm_campaign: '',
+            utm_term: '',
+            utm_content: ''
         };
+
+        // 1. Extrai da URL de forma insensível a maiúsculas/minúsculas
+        params.forEach((val, key) => {
+            const k = key.toLowerCase();
+            const upper = key.toUpperCase();
+            if (k === 'utm_source' || upper.includes('UTM_SOURCE')) utms.utm_source = val;
+            else if (k === 'utm_medium' || upper.includes('UTM_MEDIUM')) utms.utm_medium = val;
+            else if (k === 'utm_campaign' || upper.includes('UTM_CAMPAIGN')) utms.utm_campaign = val;
+            else if (k === 'utm_term' || upper.includes('UTM_TERM')) utms.utm_term = val;
+            else if (k === 'utm_content' || upper.includes('UTM_CONTENT')) utms.utm_content = val;
+        });
+
+        // 2. Persiste em sessionStorage e localStorage para não perder se o usuário recarregar ou navegar
+        Object.keys(utms).forEach(k => {
+            if (utms[k]) {
+                try {
+                    sessionStorage.setItem('ambientalpro_' + k, utms[k]);
+                    localStorage.setItem('ambientalpro_' + k, utms[k]);
+                } catch (e) {}
+            } else {
+                // Recupera caso não esteja na URL atual
+                try {
+                    utms[k] = sessionStorage.getItem('ambientalpro_' + k) || localStorage.getItem('ambientalpro_' + k) || '';
+                } catch (e) {}
+            }
+        });
+
+        return utms;
     }
+
+    // Inicializa captura de UTMs ao carregar
+    getUTMs();
 
     // Handle Form Submit
     if (leadForm) {
-        leadForm.addEventListener('submit', (e) => {
+        leadForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             
+            const submitBtn = leadForm.querySelector('button[type="submit"]');
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Processando inscrição...';
+            }
+
             const nomeInput = document.getElementById('nome');
             const emailInput = document.getElementById('email');
             const telefoneInput = document.getElementById('telefone');
             const areaInput = document.getElementById('area');
             const graduacaoInput = document.querySelector('input[name="graduacao"]:checked');
             
+            const utmData = getUTMs();
             const payload = {
-                nome: nomeInput ? nomeInput.value : '',
-                email: emailInput ? emailInput.value : '',
-                telefone: telefoneInput ? telefoneInput.value : '',
-                area: areaInput ? areaInput.value : '',
+                nome: nomeInput ? nomeInput.value.trim() : '',
+                name: nomeInput ? nomeInput.value.trim() : '',
+                email: emailInput ? emailInput.value.trim().toLowerCase() : '',
+                telefone: telefoneInput ? telefoneInput.value.trim() : '',
+                phone: telefoneInput ? telefoneInput.value.trim() : '',
+                area: areaInput ? areaInput.value.trim() : '',
                 graduacao: graduacaoInput ? graduacaoInput.value : '',
-                ...getUTMs()
+                ...utmData
             };
 
-            if (nomeInput) localStorage.setItem('ambientalpro_lead_nome', nomeInput.value);
-            if (emailInput) localStorage.setItem('ambientalpro_lead_email', emailInput.value);
-            if (telefoneInput) localStorage.setItem('ambientalpro_lead_telefone', telefoneInput.value);
-            if (areaInput) localStorage.setItem('ambientalpro_lead_area', areaInput.value);
+            if (nomeInput) localStorage.setItem('ambientalpro_lead_nome', nomeInput.value.trim());
+            if (emailInput) localStorage.setItem('ambientalpro_lead_email', emailInput.value.trim().toLowerCase());
+            if (telefoneInput) localStorage.setItem('ambientalpro_lead_telefone', telefoneInput.value.trim());
+            if (areaInput) localStorage.setItem('ambientalpro_lead_area', areaInput.value.trim());
             if (graduacaoInput) localStorage.setItem('ambientalpro_lead_graduacao', graduacaoInput.value);
             
-
-            // Webhook de inscrição
+            // 1. Webhook de inscrição (n8n / endpoint externo)
             fetch('https://node2.rodrigogreco.com.br/webhook/prova/bolsa/inscricao', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(payload)
+                body: JSON.stringify(payload),
+                keepalive: true
             }).catch(err => console.error("Erro ao enviar webhook de inscrição:", err));
 
+            // 2. Envia para a API ActiveCampaign com timeout de segurança e keepalive para evitar cancelamento do navegador
+            try {
+                const timeoutPromise = new Promise(resolve => setTimeout(resolve, 2000));
+                const fetchPromise = fetch('/api/subscribe', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload),
+                    keepalive: true
+                }).then(async res => {
+                    if (!res.ok) {
+                        const err = await res.text();
+                        console.warn("ActiveCampaign sync response not OK:", res.status, err);
+                    }
+                }).catch(err => console.error("Erro ao integrar com ActiveCampaign:", err));
+
+                await Promise.race([fetchPromise, timeoutPromise]);
+            } catch (err) {
+                console.error("Erro no envio:", err);
+            }
+
+            // Preserva parâmetros na URL ao redirecionar
+            const searchParams = new URLSearchParams(window.location.search);
+            Object.keys(utmData).forEach(k => {
+                if (utmData[k] && !searchParams.has(k)) {
+                    searchParams.set(k, utmData[k]);
+                }
+            });
+            const searchStr = searchParams.toString() ? '?' + searchParams.toString() : '';
+
             // Redireciona para a página da prova
-            window.location.href = 'prova/';
+            window.location.href = 'prova/' + searchStr;
         });
     }
 
