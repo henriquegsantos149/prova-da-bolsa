@@ -9,13 +9,21 @@ window.scrollTo(0, 0);
 
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Recuperar dados do localStorage
-    const nome = localStorage.getItem('ambientalpro_lead_nome') || 'Olivio';
+    const nome = (localStorage.getItem('ambientalpro_lead_nome') || '').trim();
+    const primeiroNome = nome ? nome.split(' ')[0] : '';
+
+    // Provas feitas antes da trava de acesso podem nao ter nome salvo. Nesse caso a
+    // saudacao fica neutra, em vez de exibir o nome de exemplo para uma pessoa real.
+    const saudacao = (prefixo) => primeiroNome
+        ? `${prefixo}, <span id="user-name" class="gradient-highlight">${primeiroNome}</span>!`
+        : `${prefixo}!`;
     const acertos = localStorage.getItem('ambientalpro_prova_acertos') || '0';
     const nota = localStorage.getItem('ambientalpro_prova_nota') || '0.0';
     let desconto = localStorage.getItem('ambientalpro_prova_desconto') || '50';
 
     // Atualizar UI com resultados
-    document.getElementById('user-name').textContent = nome.split(' ')[0]; // Primeiro nome
+    const titleH1 = document.querySelector('.results-title');
+    if (titleH1) titleH1.innerHTML = saudacao('Parabéns');
 
     const numAcertos = parseInt(acertos, 10);
     const subtitleEl = document.querySelector('.results-hero .container > p:first-of-type');
@@ -31,17 +39,15 @@ document.addEventListener('DOMContentLoaded', () => {
             subtitleEl.innerHTML = 'Excelente resultado! Isso mostra seu compromisso com o crescimento profissional.<br>Nossa pós-graduação foi feita para quem deseja se destacar no mercado. Sua participação garantiu um desconto exclusivo de';
         }
     } else if (descontoNum > 0) {
-        const titleH1 = document.querySelector('.results-title');
         if (titleH1) {
-            titleH1.innerHTML = `Olá, <span id="user-name" class="gradient-highlight">${nome.split(' ')[0]}</span>!`;
+            titleH1.innerHTML = saudacao('Olá');
         }
         if (subtitleEl) {
             subtitleEl.innerHTML = 'Não se desanime com o resultado! Aproveite esta oportunidade para ampliar seus conhecimentos e construir uma carreira ainda mais sólida. O aprendizado contínuo faz toda a diferença na vida profissional. Sua participação garantiu';
         }
     } else {
-        const titleH1 = document.querySelector('.results-title');
         if (titleH1) {
-            titleH1.innerHTML = `Olá, <span id="user-name" class="gradient-highlight">${nome.split(' ')[0]}</span>!`;
+            titleH1.innerHTML = saudacao('Olá');
         }
         if (subtitleEl) {
             subtitleEl.innerHTML = 'Não se desanime com o resultado! Infelizmente, a sua nota não foi suficiente para garantir uma bolsa de estudos neste momento.<br><br>Mas não desista! Entre em contato com a nossa equipe comercial para avaliarmos a sua situação e encontrarmos a melhor forma de você iniciar a sua pós-graduação.';

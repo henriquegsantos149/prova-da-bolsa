@@ -173,6 +173,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Abre o formulario automaticamente quando o aluno foi redirecionado da prova
+    // ou da pagina de resultado por falta de identificacao.
+    if (modal && new URLSearchParams(window.location.search).get('identificacao') === '1') {
+        modal.style.display = 'block';
+        const aviso = document.getElementById('identificacao-aviso');
+        if (aviso) aviso.style.display = 'block';
+    }
+
     // Restrict Phone Input to Numbers Only
     if (telefoneInput) {
         telefoneInput.addEventListener('input', function(e) {
@@ -253,11 +261,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 ...utmData
             };
 
-            if (nomeInput) localStorage.setItem('ambientalpro_lead_nome', nomeInput.value.trim());
-            if (emailInput) localStorage.setItem('ambientalpro_lead_email', emailInput.value.trim().toLowerCase());
-            if (telefoneInput) localStorage.setItem('ambientalpro_lead_telefone', telefoneInput.value.trim());
-            if (areaInput) localStorage.setItem('ambientalpro_lead_area', areaInput.value.trim());
-            if (graduacaoInput) localStorage.setItem('ambientalpro_lead_graduacao', graduacaoInput.value);
+            // Sem try/catch, uma falha de armazenamento abortaria o handler e o aluno
+            // nem chegaria a prova.
+            try {
+                if (nomeInput) localStorage.setItem('ambientalpro_lead_nome', nomeInput.value.trim());
+                if (emailInput) localStorage.setItem('ambientalpro_lead_email', emailInput.value.trim().toLowerCase());
+                if (telefoneInput) localStorage.setItem('ambientalpro_lead_telefone', telefoneInput.value.trim());
+                if (areaInput) localStorage.setItem('ambientalpro_lead_area', areaInput.value.trim());
+                if (graduacaoInput) localStorage.setItem('ambientalpro_lead_graduacao', graduacaoInput.value);
+            } catch (err) {
+                console.error("Erro ao salvar a identificacao do lead:", err);
+            }
             
             // 1. Webhook de inscrição (n8n / endpoint externo)
             fetch('https://node2.rodrigogreco.com.br/webhook/prova/bolsa/inscricao', {
@@ -293,6 +307,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Preserva parâmetros na URL ao redirecionar
             const searchParams = new URLSearchParams(window.location.search);
+            searchParams.delete('identificacao');
             Object.keys(utmData).forEach(k => {
                 if (utmData[k] && !searchParams.has(k)) {
                     searchParams.set(k, utmData[k]);

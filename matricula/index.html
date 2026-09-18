@@ -4,6 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Trava de acesso: o resultado so abre para quem realmente fez a prova -->
+    <script>
+        (function () {
+            try {
+                // Se o armazenamento nao funciona, nao redireciona: entraria em loop infinito.
+                var teste = '__ambientalpro_teste__';
+                localStorage.setItem(teste, '1');
+                localStorage.removeItem(teste);
+
+                if (localStorage.getItem('ambientalpro_prova_realizada') !== 'true') {
+                    var qs = window.location.search || '';
+                    var sep = qs ? qs + '&' : '?';
+                    window.location.replace('/' + sep + 'identificacao=1');
+                }
+            } catch (e) { /* armazenamento indisponivel: segue sem travar */ }
+        })();
+    </script>
     <title>Bolsa de Estudos - Ambiental Pro</title>
     <meta name="description"
         content="Participe gratuitamente da prova de seleção e avance rumo às melhores oportunidades da área ambiental com bolsas de até 70% na sua pós graduação.">

@@ -3,6 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Trava de acesso: a prova so abre para quem se identificou no formulario -->
+    <script>
+        (function () {
+            try {
+                // Se o armazenamento nao funciona, nao redireciona: entraria em loop infinito,
+                // porque o formulario tambem nao conseguiria gravar a identificacao.
+                var teste = '__ambientalpro_teste__';
+                localStorage.setItem(teste, '1');
+                localStorage.removeItem(teste);
+
+                var qs = window.location.search || '';
+                var sep = qs ? qs + '&' : '?';
+                var jaFez = localStorage.getItem('ambientalpro_prova_realizada') === 'true';
+                var nome = (localStorage.getItem('ambientalpro_lead_nome') || '').trim();
+                var email = (localStorage.getItem('ambientalpro_lead_email') || '').trim();
+
+                if (jaFez) {
+                    // Quem ja concluiu a prova vai para o resultado, sem refazer.
+                    window.location.replace('/matricula/' + qs);
+                } else if (!nome || !email) {
+                    window.location.replace('/' + sep + 'identificacao=1');
+                }
+            } catch (e) { /* armazenamento indisponivel: segue sem travar */ }
+        })();
+    </script>
     <title>Prova da Bolsa - Ambiental Pro</title>
     <meta name="description" content="Avaliação para concorrer a bolsas de estudos na Ambiental Pro.">
     
