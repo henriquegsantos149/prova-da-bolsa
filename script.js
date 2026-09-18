@@ -177,8 +177,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // ou da pagina de resultado por falta de identificacao.
     if (modal && new URLSearchParams(window.location.search).get('identificacao') === '1') {
         modal.style.display = 'block';
+        // O aviso substitui o texto padrao do modal, para nao repetir a mesma instrucao.
         const aviso = document.getElementById('identificacao-aviso');
-        if (aviso) aviso.style.display = 'block';
+        const textoPadrao = document.getElementById('modal-texto-padrao');
+        if (aviso) {
+            aviso.style.display = 'block';
+            if (textoPadrao) textoPadrao.style.display = 'none';
+        }
     }
 
     // Restrict Phone Input to Numbers Only
