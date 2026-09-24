@@ -968,6 +968,18 @@ h6 {
     font-size: 1.1rem;
 }
 
+.form-privacy-notice {
+    margin-top: 15px;
+    font-size: 0.78rem;
+    color: #9ca3af;
+    line-height: 1.4;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
 /* =========================================
    PROVA STYLES
    ========================================= */
