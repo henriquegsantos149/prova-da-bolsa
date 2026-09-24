@@ -969,14 +969,14 @@ h6 {
 }
 
 .form-privacy-notice {
-    margin-top: 15px;
-    font-size: 0.78rem;
-    color: #9ca3af;
-    line-height: 1.4;
-    text-align: center;
+    margin-top: 12px;
+    font-size: 0.68rem;
+    color: #94a3b8;
+    line-height: 1.35;
+    text-align: left;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
+    justify-content: flex-start;
     gap: 6px;
 }
 
