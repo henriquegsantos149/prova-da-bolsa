@@ -136,7 +136,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Atualizar MBA IDA (R$ 11.970,00) - Isso vai aplicar a todos os MBAs
     const priceIdas = document.querySelectorAll('[id^="price-ida"], [data-base="11970"]');
     priceIdas.forEach(priceEl => {
-        const base = 11970.00;
+        let base = 11970.00;
+        
+        // Novo preço base do MBA IDA
+        if (priceEl.id === 'price-ida' || priceEl.id === 'price-ida-index') {
+            base = 5970.00;
+        }
+        
         const discounted = base * descMult;
         priceEl.innerHTML = `
             <div class="old-price">De: ${formatBRL(base)}</div>
