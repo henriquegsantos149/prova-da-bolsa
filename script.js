@@ -278,6 +278,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.error("Erro ao salvar a identificacao do lead:", err);
             }
             
+            // Disparo de conversão Lead no Meta Pixel
+            if (typeof fbq === 'function') {
+                fbq('track', 'Lead');
+            }
+
             // 1. Webhook de inscrição (n8n / endpoint externo)
             fetch('https://node2.rodrigogreco.com.br/webhook/prova/bolsa/inscricao', {
                 method: 'POST',

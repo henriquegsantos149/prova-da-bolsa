@@ -365,4 +365,14 @@ document.addEventListener('DOMContentLoaded', () => {
         updateTimer();
         setInterval(updateTimer, 1000);
     }
+
+    // Tracking do Meta Pixel para cliques em Checkout
+    document.querySelectorAll('a[href*="/api/checkout"]').forEach(link => {
+        link.addEventListener('click', () => {
+            if (typeof fbq === 'function') {
+                fbq('track', 'InitiateCheckout');
+            }
+        });
+    });
 });
+
