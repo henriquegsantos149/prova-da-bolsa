@@ -11,7 +11,7 @@ export default function handler(req, res) {
             '30': 'https://pay.voompcreators.com.br/12211/offer/PBZj8j',
         },
         'alpa': {
-            '70': 'https://pay.voompcreators.com.br/13461/offer/woh3nv',
+            '70': 'https://pay.voompcreators.com.br/oGlhQlHOBalHxO6n/offer/ieyg0p',
             '65': 'https://pay.voompcreators.com.br/13461/offer/bXfCrJ',
             '60': 'https://pay.voompcreators.com.br/13461/offer/GyxBxQ',
             '55': 'https://pay.voompcreators.com.br/13461/offer/tKzPhb',
@@ -35,7 +35,7 @@ export default function handler(req, res) {
             '30': 'https://pay.voompcreators.com.br/14929/offer/p5Eu92',
         },
         'ida': {
-            '70': 'https://pay.voompcreators.com.br/13467/offer/cnkr1i',
+            '70': 'https://pay.voompcreators.com.br/bKrxpWkJrygL2pXW/offer/rJcjgI',
             '65': 'https://pay.voompcreators.com.br/13467/offer/0sZFpK',
             '60': 'https://pay.voompcreators.com.br/13467/offer/8Kmsc8',
             '55': 'https://pay.voompcreators.com.br/13467/offer/vcZsJm',
